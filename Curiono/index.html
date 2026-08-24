@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<!-- ===== CABEÇALHO DA PÁGINA INICIAL ===== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Curiono - Explore. Discover. Understand.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('curiono-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- ===== CABEÇALHO E LOGO ===== -->
+    <header class="header header-non-sticky">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="logo/logo.png" alt="Curiono Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1 class="logo-title">Curiono</h1>
+                    <p class="tagline">Explore. Discover. Understand.</p>
+                </div>
+            </div>
+            
+            <!-- ===== MENU HAMBÚRGUER MOBILE ===== -->
+            <button
+    class="mobile-menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="main-navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+            
+            <!-- ===== NAVEGAÇÃO DESKTOP ===== -->
+            <nav class="nav" id="main-navigation">
+                <button class="nav-filter active" data-category="all" aria-pressed="true">Home</button>
+                <button class="nav-filter" data-category="history" aria-pressed="false">History</button>
+                <button class="nav-filter" data-category="science" aria-pressed="false">Science</button>
+                <button class="nav-filter" data-category="culture" aria-pressed="false">Culture</button>
+                <button class="nav-filter" data-category="nature" aria-pressed="false">Nature</button>
+                <button class="nav-filter" data-category="technology" aria-pressed="false">Technology</button>
+                <button class="nav-filter" data-category="mysteries" aria-pressed="false">Mysteries</button>
+               
+
+            </nav>
+            
+            <!-- ===== BOTÃO DE TEMA ESCURO E CLARO ===== -->
+            <div class="header-actions">
+                                <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
+                    <span class="theme-icon moon-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                    <span class="theme-icon sun-icon" aria-hidden="true" style="display: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="main-content">
+        <!-- ===== SEÇÃO DE DESTAQUE PRINCIPAL ===== -->
+        <section class="hero-section">
+            <div class="hero-main">
+                <div class="hero-text-panel">
+                    <span class="category-label">HISTORY</span>
+                    <h2 class="hero-title">The Lost Library<br>of Alexandria</h2>
+                    <p class="hero-description">Once the greatest center of knowledge in the ancient world, the Library of Alexandria held hundreds of thousands of scrolls. What really happened to it?</p>
+                    <a href="articles/history/the-lost-library-of-alexandria/index.html" class="cta-button">
+                        Read Full Story
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <div class="hero-metadata">
+                        <span>8 min read</span>
+                        <span>June 2, 2026</span>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="articles/history/the-lost-library-of-alexandria/cover.png" alt="The Lost Library of Alexandria" class="hero-image">
+                </div>
+            </div>
+            
+            <!-- ===== CURIOSIDADE DO DIA ===== -->
+            <div class="sidebar-card">
+                <h3 class="sidebar-title">Curiosity of the Day</h3>
+                <div class="sidebar-image-wrapper">
+                    <img src="articles/curiosity-of-the-day/cover.png" alt="Tutankhamun's golden mask" class="sidebar-image">
+                </div>
+                <h4 class="sidebar-article-title">Tutankhamun's tomb<br>was discovered by accident.</h4>
+                <p class="sidebar-description">In 1922, archaeologist Howard Carter was searching for another tomb when he stumbled upon history.</p>
+                <a href="articles/curiosity-of-the-day/index.html" class="sidebar-button">Learn More</a>
+            </div>
+        </section>
+
+        <!-- ===== ÚLTIMOS ARTIGOS ===== -->
+        <section class="latest-articles" id="latest-articles">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="articles-grid">
+                <!-- ===== ARTIGOS DE CIÊNCIA ===== -->
+                <!-- Card 1 -->
+                <a href="articles/science/why-earth-is-the-only-known-planet-with-life/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="science" data-search="science why earth is the only known planet with life scientists explore the unique conditions that make life possible on our planet earth life planet habitability">
+                        <div class="card-image-wrapper">
+                            <img src="articles/science/why-earth-is-the-only-known-planet-with-life/cover.png" alt="Why Earth Is the Only Known Planet with Life" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">SCIENCE</span>
+                            <h3 class="card-title">Why Earth Is the Only<br>Known Planet with Life</h3>
+                            <p class="card-excerpt">Scientists explore the unique conditions that make life possible on our planet.</p>
+                            <div class="card-meta">
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="articles/science/what-would-happen-if-you-walked-on-the-moon/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="science" data-search="science what would happen if you walked on the moon the effects on your body the challenges and the surprising truth moon astronaut lunar science space">
+                        <div class="card-image-wrapper">
+                            <img src="articles/science/what-would-happen-if-you-walked-on-the-moon/cover.png" alt="What Would Happen If You Walked on the Moon?" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">SCIENCE</span>
+                            <h3 class="card-title">What Would Happen If<br>You Walked on the Moon?</h3>
+                            <p class="card-excerpt">The effects on your body, the challenges, and the surprising truth.</p>
+                            <div class="card-meta">
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- ===== ARTIGOS DE HISTÓRIA ===== -->
+                <!-- Card 2 -->
+                <a href="articles/history/the-real-story-of-the-spartans/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="history" data-search="history the real story of the spartans beyond the legend of 300 lies a society built on discipline and strategy spartans greece ancient warriors">
+                        <div class="card-image-wrapper">
+                            <img src="articles/history/the-real-story-of-the-spartans/cover.png" alt="The Real Story of the Spartans" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">HISTORY</span>
+                            <h3 class="card-title">The Real Story of the<br>Spartans</h3>
+                            <p class="card-excerpt">Beyond the legend of 300 lies a society built on discipline and strategy.</p>
+                            <div class="card-meta">
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="articles/history/how-were-the-pyramids-really-built/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="history" data-search="history how were the pyramids really built theories evidence and modern technology help solve ancient mysteries pyramids egypt ancient construction">
+                        <div class="card-image-wrapper">
+                            <img src="articles/history/how-were-the-pyramids-really-built/cover.png" alt="How Were the Pyramids Really Built?" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">HISTORY</span>
+                            <h3 class="card-title">How Were the Pyramids<br>Really Built?</h3>
+                            <p class="card-excerpt">Theories, evidence, and modern technology help solve ancient mysteries.</p>
+                            <div class="card-meta">
+                                <span>9 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="articles/history/machu-picchu-lost-city-of-the-incas/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="history" data-search="history machu picchu lost city of the incas hidden in the andes this ancient city continues to fascinate the world machu picchu incas peru ruins">
+                        <div class="card-image-wrapper">
+                            <img src="articles/history/machu-picchu-lost-city-of-the-incas/cover.png" alt="Machu Picchu: Lost City of the Incas" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">HISTORY</span>
+                            <h3 class="card-title">Machu Picchu: Lost City<br>of the Incas</h3>
+                            <p class="card-excerpt">Hidden in the Andes, this ancient city continues to fascinate the world.</p>
+                            <div class="card-meta">
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- ===== ARTIGOS DE CULTURA ===== -->
+                <!-- Card 5 -->
+                <a href="articles/culture/the-code-that-changed-humanity/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="culture" data-search="culture the code that changed humanity from cuneiform to the printing press how writing shaped our world code writing humanity language symbols">
+                        <div class="card-image-wrapper">
+                            <img src="articles/culture/the-code-that-changed-humanity/cover.png" alt="The Code That Changed Humanity" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">CULTURE</span>
+                            <h3 class="card-title">The Code That Changed<br>Humanity</h3>
+                            <p class="card-excerpt">From cuneiform to the printing press — how writing shaped our world.</p>
+                            <div class="card-meta">
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- ===== ARTIGOS DE MISTÉRIOS ===== -->
+                <!-- Card 7 -->
+                <a href="articles/mysteries/bermuda-triangle-myth-or-reality/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="mysteries" data-search="mysteries the bermuda triangle myth or reality disappearances strange events and what science has to say bermuda triangle mystery ocean compass">
+                        <div class="card-image-wrapper">
+                            <img src="articles/mysteries/bermuda-triangle-myth-or-reality/cover.png" alt="The Bermuda Triangle: Myth or Reality?" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">MYSTERIES</span>
+                            <h3 class="card-title">The Bermuda Triangle:<br>Myth or Reality?</h3>
+                            <p class="card-excerpt">Disappearances, strange events, and what science has to say.</p>
+                            <div class="card-meta">
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- ===== ARTIGOS DE TECNOLOGIA ===== -->
+                <!-- Card 8 -->
+                <a href="articles/technology/crispr-the-gene-revolution/index.html" class="article-card-link">
+                    <article class="article-card searchable-card" data-category="technology" data-search="technology crispr the gene revolution how gene editing could change medicine food and our future crispr dna genes biotech future">
+                        <div class="card-image-wrapper">
+                            <img src="articles/technology/crispr-the-gene-revolution/cover.png" alt="CRISPR: The Gene Revolution" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">TECHNOLOGY</span>
+                            <h3 class="card-title">CRISPR: The Gene<br>Revolution</h3>
+                            <p class="card-excerpt">How gene editing could change medicine, food, and our future.</p>
+                            <div class="card-meta">
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            
+            <!-- ===== ESTADOS VAZIOS PARA PESQUISA E FILTRO ===== -->
+            <div class="search-empty-state" id="searchEmptyState" style="display: none;">
+                <div class="empty-state-content">
+                    <svg class="empty-state-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <h3 class="empty-state-title">No articles found.</h3>
+                    <p class="empty-state-subtitle">Try searching for history, science, mysteries, moon, pyramids, or DNA.</p>
+                </div>
+            </div>
+            <div class="category-empty-state" id="categoryEmptyState" style="display: none;">
+                <div class="empty-state-content">
+                    <svg class="empty-state-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <h3 class="empty-state-title">Articles coming soon</h3>
+                    <p class="empty-state-subtitle">We're still preparing stories for this category. Check back soon for new discoveries on Curiono.</p>
+                    <p class="empty-state-hint">Try History, Science, Culture, Mysteries, or Technology.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="logo/logo.png" alt="Curiono Logo" class="footer-logo-image">
+                    <span class="footer-logo-text">Curiono</span>
+                </div>
+                <p class="footer-tagline">Explore. Discover. Understand.</p>
+            </div>
+            <div class="footer-right">
+                <a href="about/index.html" class="footer-link">About</a>
+                <a href="privacy-policy/index.html" class="footer-link">Privacy Policy</a>
+                <a href="Terms of Use/curiono-terms-of-use.html" class="footer-link">Terms of Use</a>
+                <a href="contact/index.html" class="footer-link">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== ALTERNÂNCIA ENTRE TEMA ESCURO E CLARO =====
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const moonIcon = themeToggle.querySelector('.moon-icon');
+            const sunIcon = themeToggle.querySelector('.sun-icon');
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    moonIcon.style.display = 'block';
+                    sunIcon.style.display = 'none';
+                    themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                    themeToggle.setAttribute('title', 'Switch to light mode');
+                } else {
+                    moonIcon.style.display = 'none';
+                    sunIcon.style.display = 'block';
+                    themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                    themeToggle.setAttribute('title', 'Switch to dark mode');
+                }
+            }
+            
+            // Initialize icon based on current theme
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            updateThemeIcon(currentTheme);
+            
+            // Toggle theme on click
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('curiono-theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('curiono-theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    updateThemeIcon(newTheme);
+                }
+            });
+        })();
+
+        // ===== FILTRO DE CATEGORIAS =====
+        (function() {
+            const navFilters = document.querySelectorAll('.nav-filter');
+            const articleCards = document.querySelectorAll('.searchable-card');
+            const articlesGrid = document.querySelector('.articles-grid');
+            const sectionTitle = document.querySelector('.section-title');
+            const categoryEmptyState = document.getElementById('categoryEmptyState');
+            const searchEmptyState = document.getElementById('searchEmptyState');
+
+            const sectionTitleMap = {
+                'all': 'Latest Articles',
+                'history': 'History Articles',
+                'science': 'Science Articles',
+                'culture': 'Culture Articles',
+                'nature': 'Nature Articles',
+                'technology': 'Technology Articles',
+                'mysteries': 'Mystery Articles',
+                'more': 'More Articles'
+            };
+
+            function filterByCategory(category) {
+                let visibleCount = 0;
+
+                articleCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+
+                    if (category === 'all' || cardCategory === category) {
+                        card.classList.remove('is-hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('is-hidden');
+                    }
+                });
+
+                // Show/hide category empty state
+                if (visibleCount === 0) {
+                    articlesGrid.style.display = 'none';
+                    categoryEmptyState.style.display = 'block';
+                    searchEmptyState.style.display = 'none';
+                } else {
+                    articlesGrid.style.display = 'grid';
+                    categoryEmptyState.style.display = 'none';
+                }
+
+                // Update section title
+                sectionTitle.textContent = sectionTitleMap[category] || 'Latest Articles';
+
+                // Scroll to articles section
+                const articlesSection = document.getElementById('latest-articles');
+                if (articlesSection) {
+                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    articlesSection.scrollIntoView({
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+                    });
+                }
+            }
+
+            navFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+
+                    // Remove active state from all filters
+                    navFilters.forEach(f => {
+                        f.classList.remove('active');
+                        f.setAttribute('aria-pressed', 'false');
+                    });
+
+                    // Add active state to clicked filter
+                    this.classList.add('active');
+                    this.setAttribute('aria-pressed', 'true');
+
+                    // Clear search when switching categories
+                    const searchInput = document.getElementById('article-search');
+                    if (searchInput) {
+                        searchInput.value = '';
+                        const searchClearBtn = document.querySelector('.search-clear-btn');
+                        if (searchClearBtn) {
+                            searchClearBtn.style.display = 'none';
+                        }
+                    }
+
+                    // Filter articles
+                    filterByCategory(category);
+                });
+            });
+        })();
+    </script>
+    <script>
+        // ===== MENU HAMBÚRGUER =====
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navigation = document.querySelector('#main-navigation');
+
+            if (!menuToggle || !navigation) return;
+
+            function closeMobileMenu() {
+                navigation.classList.remove('is-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Open navigation menu');
+            }
+
+            menuToggle.addEventListener('click', function () {
+                const isOpen = navigation.classList.toggle('is-open');
+
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+                menuToggle.setAttribute(
+                    'aria-label',
+                    isOpen ? 'Close navigation menu' : 'Open navigation menu'
+                );
+            });
+
+            navigation.querySelectorAll('.nav-filter').forEach(function (categoryButton) {
+                categoryButton.addEventListener('click', function () {
+                    closeMobileMenu();
+                });
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                const clickedInsideMenu =
+                    navigation.contains(event.target) ||
+                    menuToggle.contains(event.target);
+
+                if (!clickedInsideMenu) {
+                    closeMobileMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

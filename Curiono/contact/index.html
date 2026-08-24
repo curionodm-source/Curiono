@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<!-- ===== CABEÇALHO DO DOCUMENTO ===== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Contact Us - Curiono</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('curiono-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- ===== CABEÇALHO MÍNIMO ===== -->
+    <header class="policy-page-header">
+        <div class="policy-header-content">
+            <a href="../index.html" class="policy-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="main-content">
+        <div class="policy-page">
+            <!-- ===== CABEÇALHO DA PÁGINA ===== -->
+            <div class="policy-header">
+                <span class="policy-label">Contact</span>
+                <h1 class="policy-title">Contact Us</h1>
+            </div>
+            
+            <!-- ===== CONTEÚDO DE CONTATO ===== -->
+            <div class="policy-content">
+                <section>
+                    <h2>Get in Touch</h2>
+                    <p>We'd love to hear from you. Whether you have questions, feedback, or just want to say hello, feel free to reach out to us.</p>
+                </section>
+
+                <section>
+                    <h2>Email</h2>
+                    <p>For general inquiries, questions about our content, or any other matters, please contact us via email:</p>
+                    <p><a href="mailto:curiono.dm@gmail.com" class="contact-email">curiono.dm@gmail.com</a></p>
+                </section>
+
+                <section>
+                    <h2>Response Time</h2>
+                    <p>We strive to respond to all inquiries within 24-48 hours during business days. Your patience is appreciated as we carefully read and consider each message we receive.</p>
+                </section>
+
+                <section>
+                    <h2>What to Include</h2>
+                    <p>To help us assist you more effectively, please include the following information in your message:</p>
+                    <ul>
+                        <li>Your name (optional)</li>
+                        <li>The topic of your inquiry</li>
+                        <li>Any relevant details or context</li>
+                        <li>Specific questions or concerns</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Privacy Note</h2>
+                    <p>Your privacy matters to us. Any personal information you share in your contact message will be used solely to respond to your inquiry and will not be shared with third parties. For more information, please review our Privacy Policy.</p>
+                </section>
+
+                <section>
+                    <h2>Feedback</h2>
+                    <p>We value your feedback and suggestions. If you have ideas for improving Curiono, topics you'd like us to cover, or any other thoughts about our content, we'd love to hear from you.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="../logo/logo.png" alt="Curiono Logo" class="footer-logo-image">
+                    <span class="footer-logo-text">Curiono</span>
+                </div>
+                <p class="footer-tagline">Explore. Discover. Understand.</p>
+            </div>
+            <div class="footer-right">
+                <a href="../about/index.html" class="footer-link">About</a>
+                <a href="../privacy-policy/index.html" class="footer-link">Privacy Policy</a>
+                <a href="../Terms of Use/curiono-terms-of-use.html" class="footer-link">Terms of Use</a>
+                <a href="index.html" class="footer-link" aria-current="page">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
