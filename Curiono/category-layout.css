@@ -1,0 +1,29 @@
+/* category-layout.css - organização automática dos cards no desktop */
+
+@media screen and (min-width: 769px) {
+
+    .articles-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+        gap: 20px !important;
+        width: 100% !important;
+        align-items: stretch !important;
+        justify-content: start !important;
+    }
+
+    .articles-grid .article-card-link {
+        display: block !important;
+        width: 100% !important;
+        position: static !important;
+        float: none !important;
+        margin: 0 !important;
+    }
+
+    .articles-grid .article-card {
+        width: 100% !important;
+        height: 100% !important;
+        position: static !important;
+        float: none !important;
+        margin: 0 !important;
+    }
+}
