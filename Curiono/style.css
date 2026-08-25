@@ -818,7 +818,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
     width: 100%;
     height: auto;
     display: block;
-    max-height: 420px;
+    max-height: 600px;
     object-fit: cover;
 }
 
@@ -841,7 +841,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
 }
 
 .article-main {
-    max-width: 100%;
+    max-width: 760px;
 }
 
 .article-body {
