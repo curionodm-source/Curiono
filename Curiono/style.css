@@ -136,7 +136,7 @@ body {
 
 .nav-filter {
     font-family: var(--font-sans);
-    font-size: 17px;
+    font-size: 14px;
     color: var(--color-text-muted);
     text-decoration: none;
     font-weight: 500;
@@ -336,7 +336,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
 
 .hero-title {
     font-family: var(--font-serif);
-    font-size: 56px;
+    font-size: 42px;
     font-weight: 700;
     color: var(--color-text);
     line-height: 1.05;
