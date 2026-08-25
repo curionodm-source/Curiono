@@ -1,34 +1,29 @@
-/* Organização dos cards de categorias — desktop apenas */
+/* category-layout.css - organização automática dos cards no desktop */
 
-@media (min-width: 1025px) {
-    .latest-articles .articles-grid {
+@media screen and (min-width: 769px) {
+
+    .articles-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
         gap: 20px !important;
         width: 100% !important;
-        justify-content: start !important;
         align-items: stretch !important;
+        justify-content: start !important;
     }
 
-    .latest-articles .articles-grid > .article-card-link {
+    .articles-grid .article-card-link {
         display: block !important;
+        width: 100% !important;
         position: static !important;
         float: none !important;
-        width: 100% !important;
-        min-width: 0 !important;
         margin: 0 !important;
-        transform: none !important;
     }
 
-    .latest-articles .articles-grid > .article-card-link > .article-card {
-        display: flex !important;
-        flex-direction: column !important;
-        position: static !important;
-        float: none !important;
+    .articles-grid .article-card {
         width: 100% !important;
         height: 100% !important;
-        min-width: 0 !important;
+        position: static !important;
+        float: none !important;
         margin: 0 !important;
-        transform: none !important;
     }
 }
