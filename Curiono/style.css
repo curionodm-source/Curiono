@@ -3842,3 +3842,10 @@ a.nav-filter[href="about/index.html"]:hover::after {
         display: flex;
     }
 }
+/* Esconder More somente no menu mobile */
+@media screen and (max-width: 768px) {
+    #main-navigation .nav-filter[data-category="more"] {
+        display: none !important;
+    }
+}
+
