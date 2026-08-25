@@ -513,34 +513,9 @@ a.nav-filter[href="about/index.html"]:hover::after {
 
 .articles-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     width: 100%;
-}
-
-/* Tablet (769px - 1024px) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .articles-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-    }
-}
-
-/* Desktop (1025px+) */
-@media screen and (min-width: 1025px) {
-    .articles-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
-        width: 100%;
-        align-items: stretch;
-        justify-content: start;
-    }
-
-    .article-card {
-        height: 100%;
-    }
 }
 
 /* ===== CARDS DOS ARTIGOS ===== */
@@ -552,8 +527,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.22s ease, border-color 0.22s ease;
     display: flex;
     flex-direction: column;
-    position: static;
-    width: 100%;
 }
 
 /* Hidden cards for filtering */
@@ -565,8 +538,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
     text-decoration: none;
     color: inherit;
     display: block;
-    width: 100%;
-    position: static;
+    position: relative;
 }
 
 .article-card-link:hover .article-card {
@@ -1592,6 +1564,11 @@ a.nav-filter[href="about/index.html"]:hover::after {
     .nav {
         gap: 20px;
     }
+    
+    .articles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 18px;
+    }
 }
 
 /* Tablet (max-width: 1024px) */
@@ -1633,6 +1610,11 @@ a.nav-filter[href="about/index.html"]:hover::after {
         height: 80px;
         margin-bottom: 0;
         flex-shrink: 0;
+    }
+    
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
     
     /* Article Page Responsive */
@@ -1880,7 +1862,11 @@ a.nav-filter[href="about/index.html"]:hover::after {
         font-size: 12px;
     }
     
-
+    /* Mobile Article Grid */
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
     
     .section-title {
         font-size: 24px;
@@ -2328,6 +2314,11 @@ a.nav-filter[href="about/index.html"]:hover::after {
     
     .sidebar-description {
         font-size: 11px;
+    }
+    
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
     
     .section-title {
