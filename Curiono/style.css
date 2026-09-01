@@ -513,7 +513,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
 
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     width: 100%;
 }
@@ -1566,7 +1566,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
     }
     
     .articles-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 18px;
     }
 }
@@ -3848,4 +3848,11 @@ a.nav-filter[href="about/index.html"]:hover::after {
         display: none !important;
     }
 }
+/* Remove completamente os cards filtrados do fluxo do Grid para evitar "buracos" */
+.articles-grid > .article-card-link.is-hidden {
+    display: none !important;
+}
 
+.searchable-card.is-hidden {
+    display: none !important;
+}

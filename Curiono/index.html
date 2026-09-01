@@ -358,91 +358,107 @@
             });
         })();
 
-        // ===== FILTRO DE CATEGORIAS =====
-        (function() {
-            const navFilters = document.querySelectorAll('.nav-filter');
-            const articleCards = document.querySelectorAll('.searchable-card');
-            const articlesGrid = document.querySelector('.articles-grid');
-            const sectionTitle = document.querySelector('.section-title');
-            const categoryEmptyState = document.getElementById('categoryEmptyState');
-            const searchEmptyState = document.getElementById('searchEmptyState');
+    
+            // ===== FILTRO DE CATEGORIAS =====
+(function () {
+    const navFilters = document.querySelectorAll('.nav-filter');
+    const cardLinks = document.querySelectorAll('.articles-grid > .article-card-link');
+    const articlesGrid = document.querySelector('.articles-grid');
+    const sectionTitle = document.querySelector('.section-title');
+    const categoryEmptyState = document.getElementById('categoryEmptyState');
+    const searchEmptyState = document.getElementById('searchEmptyState');
 
-            const sectionTitleMap = {
-                'all': 'Latest Articles',
-                'history': 'History Articles',
-                'science': 'Science Articles',
-                'culture': 'Culture Articles',
-                'nature': 'Nature Articles',
-                'technology': 'Technology Articles',
-                'mysteries': 'Mystery Articles',
-                'more': 'More Articles'
-            };
+    const sectionTitleMap = {
+        all: 'Latest Articles',
+        history: 'History Articles',
+        science: 'Science Articles',
+        culture: 'Culture Articles',
+        nature: 'Nature Articles',
+        technology: 'Technology Articles',
+        mysteries: 'Mystery Articles',
+        more: 'More Articles'
+    };
 
-            function filterByCategory(category) {
-                let visibleCount = 0;
+    function filterByCategory(category) {
+        let visibleCount = 0;
 
-                articleCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
+        cardLinks.forEach((link) => {
+            const cardCategory = link.dataset.category;
+            const shouldShow = category === 'all' || cardCategory === category;
 
-                    if (category === 'all' || cardCategory === category) {
-                        card.classList.remove('is-hidden');
-                        visibleCount++;
-                    } else {
-                        card.classList.add('is-hidden');
-                    }
-                });
+            link.classList.toggle('is-hidden', !shouldShow);
 
-                // Show/hide category empty state
-                if (visibleCount === 0) {
-                    articlesGrid.style.display = 'none';
-                    categoryEmptyState.style.display = 'block';
-                    searchEmptyState.style.display = 'none';
-                } else {
-                    articlesGrid.style.display = 'grid';
-                    categoryEmptyState.style.display = 'none';
-                }
-
-                // Update section title
-                sectionTitle.textContent = sectionTitleMap[category] || 'Latest Articles';
-
-                // Scroll to articles section
-                const articlesSection = document.getElementById('latest-articles');
-                if (articlesSection) {
-                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                    articlesSection.scrollIntoView({
-                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
-                    });
-                }
+            const article = link.querySelector('.searchable-card');
+            if (article) {
+                article.classList.toggle('is-hidden', !shouldShow);
             }
 
-            navFilters.forEach(filter => {
-                filter.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
+            if (shouldShow) {
+                visibleCount += 1;
+            }
+        });
 
-                    // Remove active state from all filters
-                    navFilters.forEach(f => {
-                        f.classList.remove('active');
-                        f.setAttribute('aria-pressed', 'false');
-                    });
+        if (articlesGrid) {
+            articlesGrid.style.display = visibleCount > 0 ? 'grid' : 'none';
+            articlesGrid.style.gap = '0';
+            // Force reflow by temporarily setting display none then back
+            articlesGrid.style.display = '';
+        }
 
-                    // Add active state to clicked filter
-                    this.classList.add('active');
-                    this.setAttribute('aria-pressed', 'true');
+        if (categoryEmptyState) {
+            categoryEmptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
 
-                    // Clear search when switching categories
-                    const searchInput = document.getElementById('article-search');
-                    if (searchInput) {
-                        searchInput.value = '';
-                        const searchClearBtn = document.querySelector('.search-clear-btn');
-                        if (searchClearBtn) {
-                            searchClearBtn.style.display = 'none';
-                        }
-                    }
+        if (searchEmptyState) {
+            searchEmptyState.style.display = 'none';
+        }
 
-                    // Filter articles
-                    filterByCategory(category);
-                });
+        if (sectionTitle) {
+            sectionTitle.textContent = sectionTitleMap[category] || 'Latest Articles';
+        }
+    }
+
+    navFilters.forEach((filter) => {
+        filter.addEventListener('click', function () {
+            const category = this.dataset.category;
+
+            if (!category) {
+                return;
+            }
+
+            navFilters.forEach((item) => {
+                item.classList.remove('active');
+                item.setAttribute('aria-pressed', 'false');
             });
+
+            this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
+
+            const searchInput = document.getElementById('article-search');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+
+            const searchClearBtn = document.querySelector('.search-clear-btn');
+            if (searchClearBtn) {
+                searchClearBtn.style.display = 'none';
+            }
+
+            filterByCategory(category);
+
+            const articlesSection = document.getElementById('latest-articles');
+            if (articlesSection) {
+                const reducedMotion = window.matchMedia(
+                    '(prefers-reduced-motion: reduce)'
+                ).matches;
+
+                articlesSection.scrollIntoView({
+                    behavior: reducedMotion ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+            }
+    });
+})();
         })();
     </script>
     <script>
