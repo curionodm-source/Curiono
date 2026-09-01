@@ -513,7 +513,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
 
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     width: 100%;
 }
@@ -3855,4 +3855,10 @@ a.nav-filter[href="about/index.html"]:hover::after {
 
 .searchable-card.is-hidden {
     display: none !important;
+}
+@media (min-width: 768px) {
+    .articles-grid {
+        /* Garante que o grid crie colunas fixas se tiver poucos itens */
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    }
 }

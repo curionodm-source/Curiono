@@ -27,3 +27,30 @@
         margin: 0 !important;
     }
 }
+/* ========================================================
+   CORREÇÃO DEFINITIVA DO TAMANHO DOS CARDS E DOS BURACOS
+   ======================================================== */
+
+/* 1. Remove os cards não selecionados do layout (Tira os buracos) */
+.articles-grid > .article-card-link.is-hidden {
+    display: none !important;
+}
+.searchable-card.is-hidden {
+    display: none !important;
+}
+
+/* 2. Impede que os cards estiquem no desktop (Protege o mobile) */
+@media (min-width: 768px) {
+    .articles-grid {
+        display: grid !important;
+        /* Força a criação de colunas vazias em vez de esticar */
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+        justify-content: start !important; /* Alinha à esquerda */
+    }
+    
+    /* Caso seu layout use Flexbox em vez de Grid, isso bloqueia o esticamento */
+    .articles-grid > .article-card-link {
+        max-width: 400px !important; 
+        flex-grow: 0 !important;
+    }
+}
