@@ -3862,3 +3862,33 @@ a.nav-filter[href="about/index.html"]:hover::after {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
     }
 }
+/* ===== SEÇÃO DE FONTES E REFERÊNCIAS ===== */
+.article-sources {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+.article-sources-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color, inherit);
+}
+
+.article-sources-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-muted, #a0aec0);
+}
+
+.article-sources-list li {
+    margin-bottom: 0.5rem;
+}
+
+.article-sources-list a {
+    color: var(--accent-color, #64ffda);
+    text-decoration: underline;
+    word-break: break-all;
+}
