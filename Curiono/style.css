@@ -4210,3 +4210,12 @@ a.nav-filter[href="about/index.html"]:hover::after {
     max-height: 250px;
     margin-top: 0.5rem;
 }
+
+/* ===== AJUSTE RESPONSIVO DO POP-UP PARA MOBILE ===== */
+@media (max-width: 480px) {
+    .dict-popup {
+        width: 260px !important;
+        padding: 1rem !important;
+        font-size: 0.85rem !important;
+    }
+}

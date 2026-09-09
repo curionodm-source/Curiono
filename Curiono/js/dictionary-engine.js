@@ -1,5 +1,5 @@
 // =========================================================================
-// MOTOR DO DICIONÁRIO INTELIGENTE (CORRIGIDO)
+// MOTOR DO DICIONÁRIO INTELIGENTE (COM POSICIONAMENTO INTELIGENTE PARA MOBILE)
 // =========================================================================
 
 function getCurrentLang() {
@@ -25,7 +25,7 @@ function initDictionary() {
     const articleBody = document.querySelector('.article-body');
     if (articleBody) {
         
-        // ESCUDO DE PROTEÇÃO: Locais onde o dicionário NUNCA deve mexer
+        // ESCUDO DE PROTEÇÃO: Ignora títulos, links e referências
         const ignoreSelectors = [
             'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
             'button', 'script', 'style', 'noscript', 
@@ -65,7 +65,7 @@ function initDictionary() {
         const regexPattern = `\\b(${allSearchTerms.map(escapeRegExp).join('|')})\\b`;
         const masterRegex = new RegExp(regexPattern, 'gi');
 
-        // APLICAÇÃO APENAS NO CORPO DO TEXTO (Ignorando títulos e referências)
+        // APLICAÇÃO PERFEITA NO TEXTO CORRIDO
         textNodes.forEach(textNode => {
             const originalText = textNode.nodeValue;
             
@@ -87,7 +87,7 @@ function initDictionary() {
         });
     }
 
-    // Gerencia cliques na tela
+    // Gerencia cliques na tela com posicionamento inteligente anticongelamento lateral
     document.addEventListener('click', function(e) {
         const termElement = e.target.closest('.smart-term');
         const closeBtn = e.target.closest('.dict-close-btn');
@@ -122,10 +122,22 @@ function initDictionary() {
                 </div>
             `;
 
+            // Força a exibição invisível temporária para o navegador calcular a largura exata da caixa
             popup.classList.add('is-active');
-            const popupWidth = 300;
+            
+            const popupWidth = popup.offsetWidth || 300;
+            const windowWidth = window.innerWidth;
+            
+            // Centraliza horizontalmente em relação à palavra clicada
             let leftPos = rect.left + window.scrollX + (rect.width / 2) - (popupWidth / 2);
-            if (leftPos < 10) leftPos = 10;
+
+            // LIMITADOR INTELIGENTE DE BORDAS: Impede que vaze para fora da tela do celular
+            if (leftPos < 10) {
+                leftPos = 10; // Margem de segurança na esquerda
+            } else if (leftPos + popupWidth > windowWidth - 10) {
+                leftPos = windowWidth - popupWidth - 10; // Força a caixa para dentro da tela na direita
+            }
+
             popup.style.top = (rect.top + window.scrollY - popup.offsetHeight - 12) + 'px';
             popup.style.left = leftPos + 'px';
         } 
@@ -207,7 +219,7 @@ function playTextAudio(wordKey) {
         new Audio(data.audioSrc).play().catch(err => console.log("Erro áudio:", err));
     } else {
         const textToRead = `${data.definition}. ${data.extendedText}`;
-        speakWithBestVoice(textToRead, lang); // Corrigido aqui
+        speakWithBestVoice(textToRead, lang);
     }
 }
 
