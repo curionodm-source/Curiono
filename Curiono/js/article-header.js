@@ -1,28 +1,27 @@
-// =========================================================================
-// SCRIPT CENTRAL DE COMPONENTES DO ARTIGO (CABEÇALHO E COMPARTILHAMENTO)
-// =========================================================================
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
+    // Calculate prefix based on current page location
+    const currentPath = window.location.pathname;
     
-    // Descobre automaticamente se o artigo está mais fundo nas pastas para ajustar os links
-    const pathSegments = window.location.pathname.split('/');
-    // Se a URL contém 'articles', calcula o nível de profundidade
-    const isArticlePage = window.location.pathname.includes('/articles/');
-    const prefix = isArticlePage ? "../../../" : ""; 
-    // Nota: Se a estrutura de pastas dos seus artigos tiver profundidades diferentes (ex: articles/nature/x vs articles/x), 
-    // podemos usar um caminho absoluto baseado no domínio ou manter o prefixo relativo ajustado.
+    // For pages in articles/category/article/index.html structure
+    // We need to go up 3 levels to reach the root
+    const isInArticles = currentPath.includes('/articles/');
+    const prefix = isInArticles ? '../../../' : '';
 
     // 1. INJEÇÃO DO CABEÇALHO DO ARTIGO
     const headerContainer = document.querySelector('header.article-header');
     if (headerContainer) {
         headerContainer.innerHTML = `
             <div class="article-header-content">
+                
+                <!-- CONTAINER ESQUERDO: Logo -> Barrinha -> Casinha -->
                 <div class="article-header-left">
                     <a href="${prefix}index.html" class="article-logo-small">
                         <img src="${prefix}logo/logo.png" alt="Curiono Logo">
                         <span class="article-logo-small-text">Curiono</span>
                     </a>
+                    
                     <span class="article-header-divider">|</span>
+                    
                     <a href="${prefix}index.html" class="icon-btn" aria-label="Home" title="Home">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -31,8 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     </a>
                 </div>
                 
+                <!-- CONTAINER DIREITO: Somente a Lua/Sol -->
                 <div class="article-header-right">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Switch mode" title="Switch mode">
                         <span class="theme-icon moon-icon" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -43,24 +43,18 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <circle cx="12" cy="12" r="5"></circle>
                                 <line x1="12" y1="1" x2="12" y2="3"></line>
                                 <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                             </svg>
                         </span>
                     </button>
                 </div>
+
             </div>
         `;
     }
 
-    // 2. INJEÇÃO DOS BOTÕES DE COMPARTILHAMENTO E METADADOS
+    // 2. INJEÇÃO DOS BOTÕES DE COMPARTILHAMENTO E METADADOS[cite: 2]
     const metaContainer = document.querySelector('.article-meta');
     if (metaContainer && !metaContainer.querySelector('.article-share')) {
-        // Preserva o tempo de leitura e a data que já estão no HTML e adiciona os botões ao lado
         const shareHtml = `
             <div class="article-share">
                 <span class="article-share-label">Share:</span>
@@ -78,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
         metaContainer.insertAdjacentHTML('beforeend', shareHtml);
     }
 
-    // 3. ATIVAÇÃO DO BOTÃO DE TEMA DENTRO DO SCRIPT CENTRALIZADO
+    // 3. ATIVAÇÃO DO BOTÃO DE TEMA[cite: 2]
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         const moonIcon = themeToggle.querySelector('.moon-icon');
@@ -112,3 +106,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+

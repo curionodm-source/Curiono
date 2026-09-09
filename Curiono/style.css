@@ -1035,18 +1035,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
     transition: color 0.22s ease;
 }
 
-.article-header-left {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.article-header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
 .article-back-button {
     display: flex;
     align-items: center;
@@ -1635,10 +1623,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
         padding: 40px 24px 60px;
     }
     
-    .article-header-content {
-        padding: 0 24px;
-    }
-    
     /* About Page Responsive */
     .about-back-nav {
         padding: 24px 24px 0;
@@ -1927,36 +1911,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
         position: relative;
     }
     
-    /* Article Page Mobile */
-    .article-header {
-        height: 56px;
-    }
-    
-    .article-header-content {
-        padding: 0 20px;
-    }
-    
-    .article-back-button {
-        padding: 8px;
-        min-width: 44px;
-        min-height: 44px;
-    }
-    
-    .article-back-button span {
-        display: none;
-    }
-    
-    .article-logo-small {
-        display: none;
-    }
-    
-    .icon-btn,
-    .theme-toggle {
-        padding: 8px;
-        min-width: 44px;
-        min-height: 44px;
-    }
-    
     .article-title {
         font-size: 32px;
         line-height: 1.15;
@@ -2045,10 +1999,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
         font-size: 13px;
     }
     
-    .article-page {
-        padding: 24px 20px 40px;
-    }
-    
     .article-grid {
         gap: 32px;
     }
@@ -2083,10 +2033,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
     
     .article-related-time {
         font-size: 11px;
-    }
-    
-    .article-logo-small {
-        display: none;
     }
     
     .article-page {
@@ -2336,14 +2282,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
     /* Article Page Small Mobile */
     .article-page {
         padding: 20px 16px 32px;
-    }
-    
-    .article-header {
-        height: 52px;
-    }
-    
-    .article-header-content {
-        padding: 0 16px;
     }
     
     .article-back-button {
@@ -2787,35 +2725,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
 }
 
 @media (max-width: 768px) {
-    .article-header {
-        height: 56px;
-    }
-    
-    .article-header-content {
-        padding: 0 20px;
-    }
-    
-    .article-back-button {
-        padding: 8px;
-        min-width: 44px;
-        min-height: 44px;
-    }
-    
-    .article-back-button span {
-        display: none;
-    }
-    
-    .article-logo-small {
-        display: none;
-    }
-    
-    .icon-btn,
-    .theme-toggle {
-        padding: 8px;
-        min-width: 44px;
-        min-height: 44px;
-    }
-    
     .article-title {
         font-size: 32px;
         line-height: 1.15;
@@ -2904,10 +2813,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
         font-size: 13px;
     }
     
-    .article-page {
-        padding: 24px 20px 40px;
-    }
-    
     .article-grid {
         gap: 32px;
     }
@@ -2956,14 +2861,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
 @media (max-width: 480px) {
     .article-page {
         padding: 20px 16px 32px;
-    }
-    
-    .article-header {
-        height: 52px;
-    }
-    
-    .article-header-content {
-        padding: 0 16px;
     }
     
     .article-back-button {
@@ -3049,12 +2946,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
     gap: 24px;
 }
 
-.article-header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
 .article-back-button {
     display: flex;
     align-items: center;
@@ -3109,12 +3000,6 @@ a.nav-filter[href="about/index.html"]:hover::after {
     line-height: 1;
     letter-spacing: -0.02em;
     transition: color 0.22s ease;
-}
-
-@media (max-width: 768px) {
-    .article-logo-small {
-        display: none;
-    }
 }
 
 @media (max-width: 768px) {
@@ -4359,6 +4244,11 @@ a.nav-filter[href="about/index.html"]:hover::after {
     width: 100%;
     padding: 1.25rem 2rem;
     box-sizing: border-box;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .article-header-content {
@@ -4366,7 +4256,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -4381,11 +4271,39 @@ a.nav-filter[href="about/index.html"]:hover::after {
     align-items: center;
 }
 
-/* Cria o risquinho separador abaixo do cabeçalho */
-.article-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+/* Logo styles - 100% opaque and high contrast */
+.article-logo-small {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    opacity: 1 !important;
+}
+
+.article-logo-small img {
+    height: 32px;
+    width: auto;
+    opacity: 1 !important;
+}
+
+.article-logo-small-text {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text) !important;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    transition: color 0.22s ease;
+    opacity: 1 !important;
+}
+
+/* Divider */
+.article-header-divider {
+    display: inline-block;
+    color: var(--color-text);
+    font-weight: 400;
+    opacity: 0.5;
+    margin: 0 4px;
 }
 
 /* Reduz o espaço vazio entre o cabeçalho e o topo do artigo */
@@ -4399,49 +4317,124 @@ a.nav-filter[href="about/index.html"]:hover::after {
 }
 
 @media (max-width: 768px) {
+    .article-header {
+        height: 56px;
+        padding: 0.5rem 1rem;
+    }
+
     .article-header-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.75rem 1rem;
+        padding: 0;
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* Mantém apenas a logo e o nome no lado esquerdo */
     .article-header-left {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 6px;
     }
 
-    /* Agrupa o botão de início/voltar junto com o tema no lado direito */
-    .article-header-right {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    /* Oculta o texto "Back to Home" no celular, exibindo apenas o ícone */
-    .article-back-button span {
-        display: none;
-    }
-
-    .article-back-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.25rem;
-    }
-
+    /* Logo and text - 100% opaque and slightly adjusted upwards */
     .article-logo-small {
         display: flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 6px;
+        text-decoration: none;
+        opacity: 1 !important;
+        position: relative;
+        top: -2px;
     }
 
     .article-logo-small img {
-        height: 22px;
+        height: 24px;
         width: auto;
+        opacity: 1 !important;
+    }
+
+    .article-logo-small-text {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-text) !important;
+        opacity: 1 !important;
+    }
+
+    /* Divider */
+    .article-header-divider {
+        display: inline-block;
+        color: var(--color-text);
+        font-weight: 400;
+        opacity: 0.5;
+        margin: 0 2px;
+    }
+
+    /* Home icon button */
+    .article-header-left .icon-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+        min-width: 36px;
+        min-height: 36px;
+        color: var(--color-text);
+        background: none;
+        border: none;
+    }
+
+    /* Theme toggle on right side */
+    .article-header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .theme-toggle {
+        padding: 4px;
+        min-width: 36px;
+        min-height: 36px;
+        color: var(--color-text);
+        background: none;
+        border: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-header {
+        height: 52px;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .article-header-left {
+        gap: 4px;
+    }
+
+    .article-logo-small {
+        gap: 4px;
+        top: -1px;
+    }
+
+    .article-logo-small img {
+        height: 20px;
+    }
+
+    .article-logo-small-text {
+        font-size: 16px;
+    }
+
+    .article-header-divider {
+        margin: 0 1px;
+    }
+
+    .article-header-left .icon-btn {
+        min-width: 32px;
+        min-height: 32px;
+        padding: 3px;
+    }
+
+    .theme-toggle {
+        min-width: 32px;
+        min-height: 32px;
+        padding: 3px;
     }
 }
