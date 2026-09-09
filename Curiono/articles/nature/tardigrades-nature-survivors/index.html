@@ -221,16 +221,20 @@
             const currentTheme = document.documentElement.getAttribute('data-theme');
             updateThemeIcon(currentTheme);
             
-            themeToggle.addEventListener('click', function() {
-                const html = document.documentElement;
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('curiono-theme', newTheme);
-                updateThemeIcon(newTheme);
-            });
-        })();
-    </script>
-</body>
-</html>
+           themeToggle.addEventListener('click', function() {
+                    const html = document.documentElement;
+                    const currentTheme = html.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    html.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('curiono-theme', newTheme);
+                    updateThemeIcon(newTheme);
+                });
+            })();
+        </script>
+
+        <!-- ===== ATIVAÇÃO DO DICIONÁRIO ===== -->
+        <script src="../../../js/dictionary-data.js"></script>
+        <script src="../../../js/dictionary-engine.js"></script>
+    </body>
+    </html>

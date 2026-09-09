@@ -3892,3 +3892,321 @@ a.nav-filter[href="about/index.html"]:hover::after {
     text-decoration: underline;
     word-break: break-all;
 }
+
+
+
+/* ===== CORREÇÃO DO POP-UP DO DICIONÁRIO ===== */
+.smart-term {
+    border-bottom: 1.5px dotted #64ffda;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.smart-term:hover {
+    color: #64ffda;
+}
+
+.dict-popup {
+    position: absolute;
+    width: 300px;
+    background-color: #0b0f19 !important;
+    background: #0b0f19;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.dict-popup.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dict-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.dict-word {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-transform: lowercase;
+}
+
+.dict-close-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+.dict-close-btn:hover {
+    color: #fff;
+}
+
+.dict-actions-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.dict-audio-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.dict-audio-btn:hover {
+    background: rgba(100, 255, 218, 0.15);
+    border-color: rgba(100, 255, 218, 0.4);
+    color: #64ffda;
+}
+
+.dict-phonetic {
+    font-family: monospace;
+    color: #64ffda;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.dict-pos {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #cbd5e1;
+    margin-bottom: 0.6rem;
+}
+
+.dict-definition {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0 0 0.8rem 0;
+}
+
+.dict-more-container {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.6rem;
+}
+
+.dict-more-toggle {
+    background: transparent;
+    border: none;
+    color: #64ffda;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 0;
+}
+
+.dict-more-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-top: 0;
+}
+
+.dict-more-content.is-open {
+    max-height: 200px;
+    margin-top: 0.5rem;
+}
+
+/* =========================================================================
+   DICIONÁRIO INTELIGENTE - ESTILOS VISUAIS
+   ========================================================================= */
+
+/* Estilo da palavra grifada no texto */
+.smart-term {
+    border-bottom: 1.5px dotted #64ffda;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.smart-term:hover {
+    color: #64ffda;
+}
+
+/* A caixinha flutuante (Pop-up) */
+.dict-popup {
+    position: absolute;
+    width: 300px;
+    background-color: #0b0f19 !important; /* Fundo sólido escuro */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+/* Mostra a caixinha quando ativa */
+.dict-popup.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Cabeçalho da caixinha (Palavra + Botão Fechar) */
+.dict-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.dict-word {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-transform: lowercase;
+}
+
+.dict-close-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+.dict-close-btn:hover {
+    color: #fff;
+}
+
+/* Linha dos botões de áudio */
+.dict-actions-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.dict-audio-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.dict-audio-btn:hover {
+    background: rgba(100, 255, 218, 0.15);
+    border-color: rgba(100, 255, 218, 0.4);
+    color: #64ffda;
+}
+
+/* Fonética e Classe Gramatical */
+.dict-phonetic {
+    font-family: monospace;
+    color: #64ffda;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.dict-pos {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #cbd5e1;
+    margin-bottom: 0.6rem;
+}
+
+/* Texto da definição curta */
+.dict-definition {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0 0 0.8rem 0;
+}
+
+/* Área do 'Ler mais sobre' */
+.dict-more-container {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.6rem;
+}
+
+.dict-more-toggle {
+    background: transparent;
+    border: none;
+    color: #64ffda;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 0;
+}
+
+.dict-more-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-top: 0;
+}
+
+.dict-more-content.is-open {
+    max-height: 250px;
+    margin-top: 0.5rem;
+}
