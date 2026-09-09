@@ -4397,3 +4397,63 @@ a.nav-filter[href="about/index.html"]:hover::after {
     margin-top: 0;
     padding-top: 0.5rem;
 }
+
+@media (max-width: 768px) {
+    .article-header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        gap: 0.5rem;
+    }
+
+    .article-header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 0;
+        flex: 1;
+    }
+
+    .article-header-right {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex-shrink: 0;
+    }
+
+    /* Oculta o texto "Back to Home" no mobile, mantendo apenas a seta */
+    .article-back-button span {
+        display: none;
+    }
+
+    .article-back-button {
+        padding: 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .article-logo-small {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .article-logo-small img {
+        height: 22px;
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .article-logo-small-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.95rem;
+    }
+}
