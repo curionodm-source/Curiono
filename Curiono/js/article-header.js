@@ -52,24 +52,62 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // 2. INJEÇÃO DOS BOTÕES DE COMPARTILHAMENTO E METADADOS[cite: 2]
+ // 2. INJEÇÃO DO BOTÃO DE COMPARTILHAMENTO E POP-UP
     const metaContainer = document.querySelector('.article-meta');
-    if (metaContainer && !metaContainer.querySelector('.article-share')) {
+    if (metaContainer && !metaContainer.querySelector('.article-share-container')) {
         const shareHtml = `
-            <div class="article-share">
-                <span class="article-share-label">Share:</span>
-                <a href="#" class="share-btn" aria-label="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-                </a>
-                <a href="#" class="share-btn" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                </a>
-                <a href="#" class="share-btn" aria-label="Copy Link" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!'); return false;" title="Copy Link">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                </a>
+            <div class="article-share-container" style="position: relative; display: inline-block; margin-left: auto;">
+                <button class="share-main-btn" id="shareMainBtn" style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-text); color: var(--color-bg); border: none; padding: 8px 16px; border-radius: 999px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity 0.2s;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                    Share
+                </button>
+
+                <div class="share-popup-modal" id="sharePopupModal" style="display: none; position: absolute; right: 0; top: calc(100% + 10px); width: 280px; background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-md); z-index: 1000; font-family: var(--font-sans);">
+                    <div style="font-weight: 700; font-size: 15px; color: var(--color-text); margin-bottom: 16px;">Share this article</div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank'); return false;" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-text); font-size: 14px; font-weight: 500;">
+                            <span style="width: 32px; height: 32px; border-radius: 50%; background: rgba(29, 161, 242, 0.1); display: flex; align-items: center; justify-content: center; color: #1DA1F2;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></span>
+                            Twitter
+                        </a>
+                        <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-text); font-size: 14px; font-weight: 500;">
+                            <span style="width: 32px; height: 32px; border-radius: 50%; background: rgba(24, 119, 242, 0.1); display: flex; align-items: center; justify-content: center; color: #1877F2;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></span>
+                            Facebook
+                        </a>
+                        <a href="#" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank'); return false;" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-text); font-size: 14px; font-weight: 500;">
+                            <span style="width: 32px; height: 32px; border-radius: 50%; background: rgba(37, 211, 102, 0.1); display: flex; align-items: center; justify-content: center; color: #25D366;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span>
+                            WhatsApp
+                        </a>
+                        <a href="#" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!'); return false;" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-text); font-size: 14px; font-weight: 500;">
+                            <span style="width: 32px; height: 32px; border-radius: 50%; background: rgba(100, 100, 100, 0.1); display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></span>
+                            Copy link
+                        </a>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--color-border); margin-top: 16px; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--color-text-muted);">
+                        <span>Thank you for sharing!</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </div>
+                </div>
             </div>
         `;
         metaContainer.insertAdjacentHTML('beforeend', shareHtml);
+
+        // Lógica de abrir/fechar o pop-up ao clicar no botão
+        const shareBtn = document.getElementById('shareMainBtn');
+        const shareModal = document.getElementById('sharePopupModal');
+
+        shareBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = shareModal.style.display === 'block';
+            shareModal.style.display = isOpen ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!shareModal.contains(e.target) && e.target !== shareBtn) {
+                shareModal.style.display = 'none';
+            }
+        });
     }
 
     // 3. ATIVAÇÃO DO BOTÃO DE TEMA[cite: 2]
