@@ -1,0 +1,56 @@
+/* category-layout.css - organização automática dos cards no desktop */
+
+@media screen and (min-width: 769px) {
+
+    .articles-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: 20px;
+        width: 100% !important;
+        align-items: stretch !important;
+        justify-content: start !important;
+    }
+
+    .articles-grid .article-card-link {
+        display: block !important;
+        width: 100% !important;
+        position: static !important;
+        float: none !important;
+        margin: 0 !important;
+    }
+
+    .articles-grid .article-card {
+        width: 100% !important;
+        height: 100% !important;
+        position: static !important;
+        float: none !important;
+        margin: 0 !important;
+    }
+}
+/* ========================================================
+   CORREÇÃO DEFINITIVA DO TAMANHO DOS CARDS E DOS BURACOS
+   ======================================================== */
+
+/* 1. Remove os cards não selecionados do layout (Tira os buracos) */
+.articles-grid > .article-card-link.is-hidden {
+    display: none !important;
+}
+.searchable-card.is-hidden {
+    display: none !important;
+}
+
+/* 2. Impede que os cards estiquem no desktop (Protege o mobile) */
+@media (min-width: 768px) {
+    .articles-grid {
+        display: grid !important;
+        /* Força a criação de colunas vazias em vez de esticar */
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+        justify-content: start !important; /* Alinha à esquerda */
+    }
+    
+    /* Caso seu layout use Flexbox em vez de Grid, isso bloqueia o esticamento */
+    .articles-grid > .article-card-link {
+        max-width: 400px !important; 
+        flex-grow: 0 !important;
+    }
+}

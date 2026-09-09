@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<!-- ===== CABEÇALHO DO DOCUMENTO ===== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Privacy Policy - Curiono</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('curiono-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- ===== CABEÇALHO MÍNIMO ===== -->
+    <header class="policy-page-header">
+        <div class="policy-header-content">
+            <a href="../index.html" class="policy-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="main-content">
+        <div class="policy-page">
+            <!-- ===== CABEÇALHO DA POLÍTICA ===== -->
+            <div class="policy-header">
+                <span class="policy-label">Privacy Policy</span>
+                <h1 class="policy-title">Privacy Policy</h1>
+            </div>
+            
+            <!-- ===== CONTEÚDO DA POLÍTICA ===== -->
+            <div class="policy-content">
+                <p>At Curiono, we respect the privacy of our visitors and value transparency regarding how information may be used on this website.</p>
+                
+                <p>This site may collect basic browsing data such as visited pages, time spent on the site, device type, and anonymous statistical information in order to improve user experience, analyze content performance, and maintain the proper functioning of the platform.</p>
+                
+                <p>The articles published on Curiono are written through research, editorial organization, and consultation of sources considered reliable, with the goal of providing informative, educational, and accessible content.</p>
+                
+                <p>Some images used on this website may be created with the support of artificial intelligence for illustrative purposes. These visuals are intended to enrich the reading experience and complement the editorial presentation of the articles. They are not meant to replace documentary, historical, or scientific records.</p>
+                
+                <p>This site may also use third-party tools in the future, such as analytics services, search tools, or advertising platforms, which may use cookies or similar technologies to improve services and personalize browsing experience.</p>
+                
+                <p>Users may choose to disable cookies in their browser settings, understanding that some features of the site may be affected.</p>
+                
+                <p>This website may contain links to external websites. Curiono is not responsible for the privacy practices, policies, or content of third-party sites.</p>
+                
+                <p>By continuing to browse this website, the user acknowledges this Privacy Policy and agrees with the terms described here.</p>
+                
+                <p>This policy may be updated periodically to reflect site improvements, legal changes, or operational adjustments.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="../logo/logo.png" alt="Curiono Logo" class="footer-logo-image">
+                    <span class="footer-logo-text">Curiono</span>
+                </div>
+                <p class="footer-tagline">Explore. Discover. Understand.</p>
+            </div>
+            <div class="footer-right">
+                <a href="../about/index.html" class="footer-link">About</a>
+                <a href="index.html" class="footer-link" aria-current="page">Privacy Policy</a>
+                <a href="../Terms of Use/curiono-terms-of-use.html" class="footer-link">Terms of Use</a>
+                <a href="../contact/index.html" class="footer-link">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

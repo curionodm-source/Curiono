@@ -4219,3 +4219,181 @@ a.nav-filter[href="about/index.html"]:hover::after {
         font-size: 0.85rem !important;
     }
 }
+
+/* =========================================================================
+   AJUSTES PARA O MODO CLARO (CONTRASTE E VISIBILIDADE)
+   ========================================================================= */
+
+/* 1. Linha pontilhada do dicionário no modo claro (Azul bem visível) */
+[data-theme="light"] .smart-term {
+    border-bottom: 1.5px dotted #0284c7; 
+    transition: color 0.2s ease;
+}
+
+[data-theme="light"] .smart-term:hover {
+    color: #0369a1;
+}
+
+/* 2. Texto geral mais escuro e nítido em todas as páginas no modo claro */
+[data-theme="light"] body {
+    color: #1e293b; /* Cinza-chumbo escuro de alto contraste para leitura perfeita */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. Garante peso e cor sólida nos parágrafos dos artigos no modo claro */
+[data-theme="light"] .article-body p {
+    color: #334155;
+    font-weight: 400;
+}
+
+/* =========================================================================
+   CORREÇÃO DEFINITIVA DE LEIBILIDADE NO MODO CLARO
+   ========================================================================= */
+
+/* Força texto escuro e de alto contraste em todo o corpo e nas referências no modo claro */
+[data-theme="light"] .article-page,
+[data-theme="light"] .article-body,
+[data-theme="light"] .article-body p,
+[data-theme="light"] .article-sources,
+[data-theme="light"] .article-sources-list li,
+[data-theme="light"] .article-caption,
+[data-theme="light"] .article-subtitle {
+    color: #0f172a !important; /* Preto/Cinza profundo de altíssimo contraste */
+    font-weight: 400;
+}
+
+/* Destaca os links dentro das referências e textos no modo claro */
+[data-theme="light"] .article-sources-list a {
+    color: #0284c7 !important;
+    font-weight: 600;
+}
+
+/* Melhora a nitidez e o preenchimento visual das letras finas no fundo claro */
+[data-theme="light"] article, 
+[data-theme="light"] .article-body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================================
+   ESTILOS EXCLUSIVOS PARA O MODO CLARO (FONTE MAIS LEGÍVEL E CONTRASTE)
+   ========================================================================= */
+
+/* 1. Troca a fonte do corpo para uma opção mais grossa e limpa ('Inter') só no claro */
+[data-theme="light"] body,
+[data-theme="light"] .article-body,
+[data-theme="light"] .article-body p,
+[data-theme="light"] .article-sources-list li {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: #0f172a !important; /* Preto/Cinza bem escuro para leitura perfeita */
+}
+
+/* 2. Garante maior destaque e peso nos títulos e subtítulos no modo claro */
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3, 
+[data-theme="light"] .article-title, 
+[data-theme="light"] .article-section-heading {
+    color: #020617 !important;
+    font-weight: 600 !important;
+}
+
+/* 3. Ajusta o texto e os títulos da barra lateral (Related Reads) no modo claro */
+[data-theme="light"] .article-sidebar,
+[data-theme="light"] .article-related,
+[data-theme="light"] .article-related-link {
+    color: #1e293b !important;
+}
+
+/* 4. Preserva e destaca a primeira letra grande (Drop Cap) em azul elegante */
+[data-theme="light"] .article-body > p:first-of-type::first-letter {
+    color: #0284c7 !important;
+    font-weight: 700 !important;
+}
+
+/* =========================================================================
+   CORREÇÃO DA LETRA GRANDE (DROP CAP) APENAS NO CORPO DO ARTIGO
+   ========================================================================= */
+
+/* 1. Garante que o subtítulo fique com a cor normal de texto */
+[data-theme="light"] .article-subtitle::first-letter {
+    color: inherit !important;
+    font-weight: normal !important;
+}
+
+/* 2. Aplica a cor azul forte exclusivamente na primeira letra do corpo principal */
+[data-theme="light"] .article-body > p:first-of-type::first-letter {
+    color: #0284c7 !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================================
+   CORREÇÃO PRECISA: APENAS NAS VERDADEIRAS LETRAS GRANDES (DROP CAPS)
+   ========================================================================= */
+
+/* 1. Garante que subtítulos e parágrafos comuns fiquem com a cor padrão */
+[data-theme="light"] .article-subtitle::first-letter,
+[data-theme="light"] .article-body p:not(:first-of-type)::first-letter,
+[data-theme="light"] .article-section p:not(:first-of-type)::first-letter {
+    color: inherit !important;
+    font-weight: normal !important;
+}
+
+/* 2. Aplica o azul unificado EXCLUSIVAMENTE na primeira letra do início dos blocos principais */
+[data-theme="light"] .article-body > p:first-of-type::first-letter,
+[data-theme="light"] .article-section > p:first-of-type::first-letter {
+    color: #0284c7 !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+}
+
+/* =========================================================================
+   CORREÇÃO DO POSICIONAMENTO DO CABEÇALHO DO ARTIGO
+   ========================================================================= */
+
+.article-header {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    box-sizing: border-box;
+}
+
+.article-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.article-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.article-header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Cria o risquinho separador abaixo do cabeçalho */
+.article-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Reduz o espaço vazio entre o cabeçalho e o topo do artigo */
+.main-content {
+    padding-top: 0.5rem;
+}
+
+.article-hero {
+    margin-top: 0;
+    padding-top: 0.5rem;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<!-- ===== CABEÇALHO DO DOCUMENTO ===== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>About Curiono - Explore. Discover. Understand.</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('curiono-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body class="about-page">
+    <!-- ===== BOTÃO VOLTAR ===== -->
+    <div class="about-back-nav">
+        <a href="../index.html" class="about-back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="main-content">
+        <!-- ===== SEÇÃO HERO ===== -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <span class="about-label">ABOUT CURIONO</span>
+                <h1 class="about-title">About Curiono</h1>
+                <p class="about-subtitle">Curiosity is the beginning of everything.</p>
+                
+                <div class="about-intro">
+                    <p>Curiono was created for readers who want more than quick answers. It is a place for discovery, context, and wonder. Through history, science, culture, nature, technology, and the world's enduring mysteries, Curiono turns curiosity into a richer reading experience.</p>
+                    
+                    <p>We believe that understanding the world shouldn't feel like a chore. Every story we publish is designed to be both informative and beautiful — clear enough for anyone to grasp, but deep enough to reward careful reading. Whether you're exploring ancient civilizations, scientific breakthroughs, or unsolved mysteries, you'll find content that respects your intelligence and feeds your curiosity.</p>
+                    
+                    <p>Curiono exists because the world is too interesting to be reduced to headlines and soundbites. We're here to slow down, look closer, and share the remarkable stories that connect us to each other and to the universe around us.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTEÚDO PRINCIPAL COM IMAGEM FIXA ===== -->
+        <section class="about-main">
+            <div class="about-grid">
+                <div class="about-text">
+                    <!-- ===== SEÇÃO MISSÃO ===== -->
+                    <div class="about-section">
+                        <h2 class="about-section-title">Our Mission</h2>
+                        <p class="about-section-text">To make knowledge engaging, beautiful, and accessible. We strip away unnecessary complexity while preserving the essential wonder of discovery. Every article is crafted to be read slowly, savored, and shared.</p>
+                    </div>
+
+                    <!-- ===== SEÇÃO O QUE EXPLORAMOS ===== -->
+                    <div class="about-section">
+                        <h2 class="about-section-title">What We Explore</h2>
+                        <p class="about-section-text">Curiono spans the breadth of human knowledge and natural wonder. From the ancient civilizations that shaped our world to the scientific breakthroughs defining our future, from cultural traditions that bind communities to the natural environments that sustain life, from the technologies reshaping how we live to the mysteries that still elude our understanding.</p>
+                    </div>
+
+                    <!-- ===== SEÇÃO POR QUE O CURIONO EXISTE ===== -->
+                    <div class="about-section">
+                        <h2 class="about-section-title">Why Curiono Exists</h2>
+                        <p class="about-section-text">Because curiosity deserves more than distraction. Because understanding requires more than headlines. Because there's a profound satisfaction in learning something new — not to pass a test or impress colleagues, but simply because the world is fascinating and you want to know more about it.</p>
+                    </div>
+
+                    <!-- ===== SEÇÃO PARA LEITORES CURIOSOS ===== -->
+                    <div class="about-section">
+                        <h2 class="about-section-title">For Curious Readers</h2>
+                        <p class="about-section-text">Curiono is for anyone who has ever wondered why things are the way they are. For readers who ask questions and aren't satisfied with simple answers. For people who believe that understanding the world is one of life's great pleasures, not a means to an end.</p>
+                    </div>
+                </div>
+
+                <!-- ===== IMAGEM FIXA ===== -->
+                <div class="about-image-container">
+                    <div class="about-image-wrapper">
+                        <img src="cover.png.png" alt="Curiono editorial visual" class="about-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GRID DE TÓPICOS ===== -->
+        <section class="about-topics">
+            <h2 class="about-topics-title">What We Cover</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <h3 class="topic-title">History</h3>
+                    <p class="topic-description">Stories from the past that shaped our world.</p>
+                </div>
+                <div class="topic-card">
+                    <h3 class="topic-title">Science</h3>
+                    <p class="topic-description">Discoveries, theories, and the forces behind reality.</p>
+                </div>
+                <div class="topic-card">
+                    <h3 class="topic-title">Culture</h3>
+                    <p class="topic-description">Art, beliefs, traditions, and the human experience.</p>
+                </div>
+                <div class="topic-card">
+                    <h3 class="topic-title">Nature</h3>
+                    <p class="topic-description">Landscapes, life, and the beauty of the natural world.</p>
+                </div>
+                <div class="topic-card">
+                    <h3 class="topic-title">Technology</h3>
+                    <p class="topic-description">Innovations that reshape how we live and think.</p>
+                </div>
+                <div class="topic-card">
+                    <h3 class="topic-title">Mysteries</h3>
+                    <p class="topic-description">Unsolved questions, strange events, and the unknown.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO CTA ===== -->
+        <section class="about-cta">
+            <div class="about-cta-content">
+                <h2 class="about-cta-title">Join us on a journey of endless discovery.</h2>
+                <p class="about-cta-text">Explore articles spanning history, science, culture, nature, technology, and the world's most intriguing mysteries.</p>
+                <a href="../index.html" class="cta-button">
+                    Explore Articles
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="../logo/logo.png" alt="Curiono Logo" class="footer-logo-image">
+                    <span class="footer-logo-text">Curiono</span>
+                </div>
+                <p class="footer-tagline">Explore. Discover. Understand.</p>
+            </div>
+            <div class="footer-right">
+                <a href="index.html" class="footer-link" aria-current="page">About</a>
+                <a href="../privacy-policy/index.html" class="footer-link">Privacy Policy</a>
+                <a href="../Terms of Use/curiono-terms-of-use.html" class="footer-link">Terms of Use</a>
+                <a href="../contact/index.html" class="footer-link">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

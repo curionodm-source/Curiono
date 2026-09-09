@@ -12,56 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ===== CABEÇALHO DO ARTIGO ===== -->
-    <header class="article-header">
-        <div class="article-header-content">
-            <div class="article-header-left">
-                <!-- ===== BOTÃO VOLTAR PARA HOME ===== -->
-                <a href="../../../index.html" class="article-back-button">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    <span>Back to Home</span>
-                </a>
-                <a href="../../../index.html" class="article-logo-small">
-                    <img src="../../../logo/logo.png" alt="Curiono Logo">
-                    <span class="article-logo-small-text">Curiono</span>
-                </a>
-            </div>
-            
-            <div class="article-header-right">
-                <a href="../../../about/index.html" class="icon-btn" aria-label="About" title="About">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
-                </a>
-                <!-- ===== BOTÃO DE TEMA DO ARTIGO ===== -->
-                <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">
-                    <span class="theme-icon moon-icon" aria-hidden="true">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                    <span class="theme-icon sun-icon" aria-hidden="true" style="display: none;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </div>
-    </header>
+    
+    <!-- ===== CABEÇALHO INJETADO PELO SCRIPT ===== -->
+    <header class="article-header"></header>
 
     <main class="main-content">
         <article class="article-page">
@@ -211,40 +164,12 @@
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT DO ARTIGO ===== -->
-    <script>
-        (function() {
-            const themeToggle = document.getElementById('themeToggle');
-            const moonIcon = themeToggle.querySelector('.moon-icon');
-            const sunIcon = themeToggle.querySelector('.sun-icon');
-            
-            function updateThemeIcon(theme) {
-                if (theme === 'dark') {
-                    moonIcon.style.display = 'block';
-                    sunIcon.style.display = 'none';
-                    themeToggle.setAttribute('aria-label', 'Switch to light mode');
-                    themeToggle.setAttribute('title', 'Switch to light mode');
-                } else {
-                    moonIcon.style.display = 'none';
-                    sunIcon.style.display = 'block';
-                    themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-                    themeToggle.setAttribute('title', 'Switch to dark mode');
-                }
-            }
-            
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            updateThemeIcon(currentTheme);
-            
-            themeToggle.addEventListener('click', function() {
-                const html = document.documentElement;
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('curiono-theme', newTheme);
-                updateThemeIcon(newTheme);
-            });
-        })();
-    </script>
+    <!-- ===== ATIVAÇÃO DO DICIONÁRIO ===== -->
+    <script src="../../../js/dictionary-data.js"></script>
+    <script src="../../../js/dictionary-engine.js"></script>
+
+    <!-- ===== ATIVAÇÃO DO NOVO METODO DE ATUALIZAÇÃO CABEÇALHO DOS ARTIGOS ===== -->
+    <script src="../../../js/article-header.js"></script>
+
 </body>
 </html>
