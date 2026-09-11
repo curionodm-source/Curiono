@@ -1,0 +1,266 @@
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Canvas */
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #1a3a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Game UI Overlay */
+.game-ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.game-stats {
+    display: flex;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-label {
+    font-weight: 600;
+    color: #a0d468;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: white;
+    min-width: 40px;
+}
+
+/* Infection Meter */
+.infection-bar {
+    width: 80px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.infection-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #ffeb3b, #f44336);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Game Screens */
+.game-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    z-index: 20;
+}
+
+.screen-content {
+    text-align: center;
+    color: white;
+    padding: 40px;
+    max-width: 500px;
+}
+
+.screen-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #a0d468;
+}
+
+.screen-title.victory {
+    color: #4caf50;
+}
+
+.screen-title.gameover {
+    color: #f44336;
+}
+
+.screen-subtitle {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.screen-instructions {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.screen-instructions p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #b0b0b0;
+}
+
+.screen-instructions strong {
+    color: #a0d468;
+}
+
+.screen-stats {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.screen-stats p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+.screen-stats span {
+    font-weight: 700;
+    color: #a0d468;
+}
+
+/* Game Buttons */
+.game-button {
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.game-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+.game-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 850px) {
+    .game-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .game-stats {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .stat-item {
+        font-size: 12px;
+    }
+
+    .infection-bar {
+        width: 60px;
+        height: 10px;
+    }
+
+    .screen-content {
+        padding: 20px;
+    }
+
+    .screen-title {
+        font-size: 28px;
+    }
+
+    .screen-subtitle {
+        font-size: 16px;
+    }
+
+    .screen-instructions {
+        padding: 15px;
+    }
+
+    .screen-instructions p {
+        font-size: 13px;
+    }
+
+    .game-button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-stats {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .stat-item {
+        font-size: 11px;
+    }
+
+    .infection-bar {
+        width: 50px;
+        height: 8px;
+    }
+
+    .screen-title {
+        font-size: 24px;
+    }
+
+    .screen-subtitle {
+        font-size: 14px;
+    }
+
+    .screen-instructions p {
+        font-size: 12px;
+    }
+
+    .game-button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+}

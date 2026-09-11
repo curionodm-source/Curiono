@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Ant: The Escape - Mini Game</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <!-- UI Overlay -->
+        <div class="game-ui">
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Time:</span>
+                    <span class="stat-value" id="timer">90</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Food:</span>
+                    <span class="stat-value" id="foodCollected">0/3</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Infection:</span>
+                    <div class="infection-bar">
+                        <div class="infection-fill" id="infectionMeter"></div>
+                    </div>
+                    <span class="stat-value" id="infectionValue">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div class="game-screen" id="startScreen">
+            <div class="screen-content">
+                <h1 class="screen-title">Zombie Ant: The Escape</h1>
+                <p class="screen-subtitle">Collect all food and return to the nest before the fungus takes over!</p>
+                <div class="screen-instructions">
+                    <p><strong>Controls:</strong></p>
+                    <p>WASD or Arrow Keys to move</p>
+                    <p>Avoid the fungus zones (red areas)</p>
+                    <p>Collect all 3 food items (green circles)</p>
+                    <p>Return to the nest (blue square) to win</p>
+                </div>
+                <button class="game-button" id="startBtn">Start Game</button>
+            </div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div class="game-screen" id="victoryScreen" style="display: none;">
+            <div class="screen-content">
+                <h1 class="screen-title victory">Victory!</h1>
+                <p class="screen-subtitle">You escaped the fungus and saved the colony!</p>
+                <div class="screen-stats">
+                    <p>Time remaining: <span id="finalTime">0</span>s</p>
+                    <p>Final infection: <span id="finalInfection">0</span>%</p>
+                </div>
+                <button class="game-button" id="playAgainBtn">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div class="game-screen" id="gameOverScreen" style="display: none;">
+            <div class="screen-content">
+                <h1 class="screen-title gameover">Game Over</h1>
+                <p class="screen-subtitle" id="gameOverReason">The fungus has taken over...</p>
+                <div class="screen-stats">
+                    <p>Food collected: <span id="gameOverFood">0</span>/3</p>
+                    <p>Final infection: <span id="gameOverInfection">0</span>%</p>
+                </div>
+                <button class="game-button" id="retryBtn">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
