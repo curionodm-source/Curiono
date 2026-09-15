@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
             html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('curiono-theme', newTheme);
+            localStorage.setItem('curOLO-theme', newTheme);
             updateThemeIcon(newTheme);
         });
     }
