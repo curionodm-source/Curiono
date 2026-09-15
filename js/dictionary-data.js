@@ -1,5 +1,5 @@
 // =========================================================================
-// BANCO DE DADOS DO DICIONÁRIO MULTILÍNGUE (CURIONO)
+// BANCO DE DADOS DO DICIONÁRIO MULTILÍNGUE (CURIONO) hjhjhjhj
 // =========================================================================
 //
 // COMO ADICIONAR UMA NOVA PALAVRA:
