@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Curiono - Explore. Discover. Understand.</title>
+    <title>CurOLO - Explore. Discover. Understand.</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('curiono-theme');
+            const savedTheme = localStorage.getItem('curOLO-theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const theme = savedTheme || (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
@@ -28,7 +28,7 @@
     <header class="header header-non-sticky">
         <div class="header-content">
             <div class="logo-section">
-                <img src="logo/logo.png" alt="Curiono Logo" class="logo-image">
+                <img src="logo/logo.png" alt="CurOLO Logo" class="logo-image">
                 <div class="logo-text">
                     <h1 class="logo-title">CurOLO</h1>
                     <p class="tagline">Explore. Discover. Understand.</p>
@@ -475,7 +475,7 @@
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                     </svg>
                     <h3 class="empty-state-title">Articles coming soon</h3>
-                    <p class="empty-state-subtitle">We're still preparing stories for this category. Check back soon for new discoveries on Curiono.</p>
+                    <p class="empty-state-subtitle">We're still preparing stories for this category. Check back soon for new discoveries on CurOLO.</p>
                     <p class="empty-state-hint">Try History, Science, Culture, Mysteries, or Technology.</p>
                 </div>
             </div>
@@ -487,8 +487,8 @@
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="logo/logo.png" alt="Curiono Logo" class="footer-logo-image">
-                    <span class="footer-logo-text">Curiono</span>
+                    <img src="logo/logo.png" alt="CurOLO Logo" class="footer-logo-image">
+                    <span class="footer-logo-text">CurOLO</span>
                 </div>
                 <p class="footer-tagline">Explore. Discover. Understand.</p>
             </div>
@@ -533,13 +533,13 @@
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 
                 document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('curiono-theme', newTheme);
+                localStorage.setItem('curOLO-theme', newTheme);
                 updateThemeIcon(newTheme);
             });
             
             // Listen for system theme changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-                if (!localStorage.getItem('curiono-theme')) {
+                if (!localStorage.getItem('curOLO-theme')) {
                     const newTheme = e.matches ? 'dark' : 'light';
                     document.documentElement.setAttribute('data-theme', newTheme);
                     updateThemeIcon(newTheme);

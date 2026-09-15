@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- CONTAINER ESQUERDO: Logo -> Barrinha -> Casinha -->
                 <div class="article-header-left">
                     <a href="${prefix}" class="article-logo-small">
-                        <img src="${prefix}logo/logo.png" alt="Curiono Logo">
-                        <span class="article-logo-small-text">Curiono</span>
+                        <img src="${prefix}logo/logo.png" alt="CurOLO Logo">
+                        <span class="article-logo-small-text">CurOLO</span>
                     </a>
                     
                     <span class="article-header-divider">|</span>
