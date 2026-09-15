@@ -59,6 +59,18 @@
                 <button class="nav-filter" data-category="more" aria-pressed="false">More</button>
             </nav>
             
+<!-- Botão de Artigo Aleatório (Dado Novo) -->
+<button id="btn-dado-surpresa" class="icon-btn" title="Artigo Surpresa">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-dado">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"></circle>
+        <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" stroke="none"></circle>
+        <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"></circle>
+        <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" stroke="none"></circle>
+        <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"></circle>
+    </svg>
+</button>
+
             <!-- ===== BOTÃO DE TEMA ESCURO E CLARO ===== -->
             <div class="header-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
@@ -697,5 +709,101 @@
             });
         });
     </script>
+
+    <!-- Janela Flutuante (Modal) do Artigo Surpresa -->
+<div id="modal-surpresa" class="modal-escondido">
+    <div class="modal-conteudo">
+        <button id="fechar-modal" class="btn-fechar">&times;</button>
+        <h3>Os dados rolaram... 🎲</h3>
+        <p>Aqui está uma leitura surpresa para você:</p>
+        
+        <!-- O JS vai injetar o artigo sorteado aqui dentro -->
+        <div id="resultado-artigo"></div>
+    </div>
+</div>
+<script src="script.js"></script>
+<!-- Janela Flutuante (Modal) do Artigo Surpresa -->
+    <div id="modal-surpresa" class="modal-escondido">
+        <div class="modal-conteudo">
+            <button id="fechar-modal" class="btn-fechar">&times;</button>
+            <h3>Os dados rolaram... 🎲</h3>
+            <p style="margin-bottom: 15px;">Aqui está uma leitura surpresa para você:</p>
+            
+            <div id="resultado-artigo"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DO DADO SURPRESA (COLOCADO DIRETO AQUI PARA GARANTIR FUNCIONAMENTO) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const listaArtigos = [
+            {
+                titulo: "The Lost Library of Alexandria",
+                descricao: "Once the greatest center of knowledge in the ancient world...",
+                link: "articles/history/the-lost-library-of-alexandria/"
+            },
+            {
+                titulo: "Göbekli Tepe",
+                descricao: "Unearthed in Turkey, this massive stone sanctuary predates Stonehenge...",
+                link: "articles/history/gobekli-tepe-first-temple/"
+            },
+            {
+                titulo: "The Fish With No Red Blood",
+                descricao: "How can a fish survive without hemoglobin in Antarctica?",
+                link: "articles/science/fish-with-no-red-blood/"
+            },
+            {
+                titulo: "The Bermuda Triangle",
+                descricao: "Disappearances, strange events, and what science has to say.",
+                link: "articles/mysteries/bermuda-triangle-myth-or-reality/"
+            }
+        ];
+
+        const btnDado = document.getElementById('btn-dado-surpresa');
+        const iconeDado = btnDado ? btnDado.querySelector('svg') : null;
+        const modal = document.getElementById('modal-surpresa');
+        const btnFechar = document.getElementById('fechar-modal');
+        const containerResultado = document.getElementById('resultado-artigo');
+
+        if (btnDado && modal) {
+            btnDado.addEventListener('click', () => {
+                // Gira o dado
+                iconeDado.classList.add('girar-dado');
+
+                // Espera 800ms
+                setTimeout(() => {
+                    iconeDado.classList.remove('girar-dado');
+
+                    // Sorteia
+                    const indiceSorteado = Math.floor(Math.random() * listaArtigos.length);
+                    const artigo = listaArtigos[indiceSorteado];
+
+                    // Cria o card
+                    containerResultado.innerHTML = `
+                        <a href="${artigo.link}" class="cartao-sorteado">
+                            <h4>${artigo.titulo}</h4>
+                            <p>${artigo.descricao}</p>
+                            <div style="margin-top: 15px; font-weight: bold; color: var(--color-primary);">Read Article &rarr;</div>
+                        </a>
+                    `;
+
+                    // Mostra o modal
+                    modal.classList.remove('modal-escondido');
+                }, 800);
+            });
+
+            btnFechar.addEventListener('click', () => {
+                modal.classList.add('modal-escondido');
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('modal-escondido');
+                }
+            });
+        }
+    });
+    </script>
+
 </body>
 </html>
