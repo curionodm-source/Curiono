@@ -13,7 +13,7 @@ const uiTexts = {
 };
 
 function initDictionary() {
-    if (typeof curionoDictionary === 'undefined') return;
+    if (typeof curOLODictionary === 'undefined') return;
 
     let popup = document.querySelector('.dict-popup');
     if (!popup) {
@@ -50,11 +50,11 @@ function initDictionary() {
 
         // MAPEAMENTO DE VARIAÇÕES (Plurais, Feminino, etc.)
         const wordMap = {}; 
-        for (const mainKey in curionoDictionary) {
+        for (const mainKey in curOLODictionary) {
             wordMap[mainKey.toLowerCase()] = mainKey;
             
-            if (curionoDictionary[mainKey].aliases) {
-                curionoDictionary[mainKey].aliases.forEach(alias => {
+            if (curOLODictionary[mainKey].aliases) {
+                curOLODictionary[mainKey].aliases.forEach(alias => {
                     wordMap[alias.toLowerCase()] = mainKey;
                 });
             }
@@ -97,7 +97,7 @@ function initDictionary() {
             e.stopPropagation();
             const key = termElement.dataset.key;
             const lang = getCurrentLang();
-            const data = curionoDictionary[key][lang] || curionoDictionary[key]['en'];
+            const data = curOLODictionary[key][lang] || curOLODictionary[key]['en'];
             const ui = uiTexts[lang];
             const rect = termElement.getBoundingClientRect();
 
@@ -202,7 +202,7 @@ function speakWithBestVoice(text, lang) {
 
 function playWordAudio(wordKey) {
     const lang = getCurrentLang();
-    const data = curionoDictionary[wordKey][lang] || curionoDictionary[wordKey]['en'];
+    const data = curOLODictionary[wordKey][lang] || curOLODictionary[wordKey]['en'];
 
     if (data.audioSrc && data.audioSrc.trim() !== "") {
         new Audio(data.audioSrc).play().catch(err => console.log("Erro áudio:", err));
@@ -213,7 +213,7 @@ function playWordAudio(wordKey) {
 
 function playTextAudio(wordKey) {
     const lang = getCurrentLang();
-    const data = curionoDictionary[wordKey][lang] || curionoDictionary[wordKey]['en'];
+    const data = curOLODictionary[wordKey][lang] || curOLODictionary[wordKey]['en'];
 
     if (data.audioSrc && data.audioSrc.trim() !== "") {
         new Audio(data.audioSrc).play().catch(err => console.log("Erro áudio:", err));

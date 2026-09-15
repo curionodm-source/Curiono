@@ -1,5 +1,5 @@
 // =========================================================================
-// BANCO DE DADOS DO DICIONÁRIO MULTILÍNGUE (CURIONO) hjhjhjhj
+// BANCO DE DADOS DO DICIONÁRIO MULTILÍNGUE (CurOLO) hjhjhjhj
 // =========================================================================
 //
 // COMO ADICIONAR UMA NOVA PALAVRA:
@@ -9,7 +9,7 @@
 //
 // =========================================================================
 
-const curionoDictionary = {
+const curOLODictionary = {
     
     // ==========================================
     // 1. HEMOGLOBINA
