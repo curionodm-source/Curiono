@@ -168,7 +168,7 @@ body {
 }
 
 .nav-filter.active::after,
-a.nav-filter[href="about/index.html"]:hover::after {
+a.nav-filter[href="about/"]:hover::after {
     content: '';
     position: absolute;
     bottom: -28px;
@@ -1858,7 +1858,7 @@ a.nav-filter[href="about/index.html"]:hover::after {
 }
 @media (max-width: 768px) {
     .nav-filter.active::after,
-    a.nav-filter[href="about/index.html"]:hover::after {
+    a.nav-filter[href="about/"]:hover::after {
         display: none;
         content: none;
     }
