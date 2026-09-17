@@ -4526,3 +4526,30 @@ a.nav-filter[href="about/"]:hover::after {
     font-size: 20px;
     margin-bottom: 8px;
 }
+
+/* ===== BARRA DE PROGRESSO DE LEITURA ===== */
+#reading-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+    background-color: transparent;
+}
+
+#reading-progress-bar {
+    height: 3px;
+    width: 0%;
+    background-color: var(--color-primary);
+    position: relative;
+}
+
+#reading-progress-text {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
