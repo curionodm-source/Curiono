@@ -143,5 +143,68 @@ document.addEventListener('DOMContentLoaded', function() {
             updateThemeIcon(newTheme);
         });
     }
+
+    // 4. BARRA DE PROGRESSO DE LEITURA
+    const articleMain = document.querySelector('.article-main') || document.querySelector('.article-grid');
+    const articleHeader = document.querySelector('header.article-header');
+    
+    if (articleMain && articleHeader) {
+        // Criar e injetar a estrutura da barra de progresso
+        const progressWrapper = document.createElement('div');
+        progressWrapper.className = 'reading-progress-wrapper';
+        progressWrapper.innerHTML = `
+            <div class="reading-progress-track">
+                <div id="reading-progress-bar"></div>
+            </div>
+            <span id="reading-progress-text">0%</span>
+        `;
+        
+        // Injetar no início do header
+        articleHeader.prepend(progressWrapper);
+        
+        // Lógica de scroll
+        const progressBar = document.getElementById('reading-progress-bar');
+        const progressText = document.getElementById('reading-progress-text');
+        
+        if (progressBar && progressText) {
+            let ticking = false;
+            
+            function updateProgress() {
+                const articleTop = articleMain.offsetTop;
+                const articleHeight = articleMain.offsetHeight;
+                const windowHeight = window.innerHeight;
+                const scrollTop = window.scrollY;
+                
+                // Calcular quando o conteúdo termina na tela
+                const articleEnd = articleTop + articleHeight - windowHeight;
+                
+                // Calcular progresso (0% quando começa, 100% quando termina)
+                let progress = ((scrollTop - articleTop) / (articleEnd - articleTop)) * 100;
+                
+                // Travar entre 0 e 100
+                progress = Math.max(0, Math.min(100, progress));
+                
+                // Atualizar UI
+                progressBar.style.width = progress + '%';
+                progressText.innerText = Math.round(progress) + '%';
+                
+                ticking = false;
+            }
+            
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateProgress);
+                    ticking = true;
+                }
+            }
+            
+            // Atualização inicial
+            updateProgress();
+            
+            // Event listeners
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll, { passive: true });
+        }
+    }
 });
 
