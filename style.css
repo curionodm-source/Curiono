@@ -1316,17 +1316,19 @@ a.nav-filter[href="about/"]:hover::after {
 .about-back-button {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 500;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-surface-2);
     color: var(--color-text-muted);
     text-decoration: none;
-    transition: color 0.22s ease;
+    transition: color 0.22s ease, background-color 0.22s ease;
 }
 
 .about-back-button:hover {
     color: var(--color-primary);
+    background-color: var(--color-surface);
 }
 
 .about-back-button svg {
@@ -1354,18 +1356,11 @@ a.nav-filter[href="about/"]:hover::after {
 
 .about-hero-content {
     max-width: 900px;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.about-label {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: block;
-}
+
 
 .about-title {
     font-family: var(--font-serif);
@@ -1389,8 +1384,8 @@ a.nav-filter[href="about/"]:hover::after {
 
 .about-intro p {
     font-family: var(--font-serif);
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 22px;
+    line-height: 1.7;
     color: var(--color-text);
     margin-bottom: 24px;
 }
@@ -1437,9 +1432,9 @@ a.nav-filter[href="about/"]:hover::after {
 
 .about-section-text {
     font-family: var(--font-serif);
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--color-text-muted);
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--color-text);
 }
 
 .about-image-container {
@@ -1505,9 +1500,9 @@ a.nav-filter[href="about/"]:hover::after {
 
 .topic-description {
     font-family: var(--font-serif);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
-    color: var(--color-text-muted);
+    color: var(--color-text);
 }
 
 .about-cta {
@@ -2091,7 +2086,7 @@ a.nav-filter[href="about/"]:hover::after {
     }
     
     .about-section-text {
-        font-size: 15px;
+        font-size: 18px;
     }
     
     .about-topics-title {
@@ -3222,17 +3217,19 @@ a.nav-filter[href="about/"]:hover::after {
 .about-back-button {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 500;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-surface-2);
     color: var(--color-text-muted);
     text-decoration: none;
-    transition: color 0.22s ease;
+    transition: color 0.22s ease, background-color 0.22s ease;
 }
 
 .about-back-button:hover {
     color: var(--color-primary);
+    background-color: var(--color-surface);
 }
 
 .about-back-button svg {
@@ -3260,18 +3257,11 @@ a.nav-filter[href="about/"]:hover::after {
 
 .about-hero-content {
     max-width: 900px;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.about-label {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: block;
-}
+
 
 .about-title {
     font-family: var(--font-serif);
@@ -3295,8 +3285,8 @@ a.nav-filter[href="about/"]:hover::after {
 
 .about-intro p {
     font-family: var(--font-serif);
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 22px;
+    line-height: 1.7;
     color: var(--color-text);
     margin-bottom: 24px;
 }
@@ -3343,9 +3333,9 @@ a.nav-filter[href="about/"]:hover::after {
 
 .about-section-text {
     font-family: var(--font-serif);
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--color-text-muted);
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--color-text);
 }
 
 .about-image-container {
@@ -3411,9 +3401,9 @@ a.nav-filter[href="about/"]:hover::after {
 
 .topic-description {
     font-family: var(--font-serif);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
-    color: var(--color-text-muted);
+    color: var(--color-text);
 }
 
 .about-cta {
@@ -3499,7 +3489,7 @@ a.nav-filter[href="about/"]:hover::after {
     }
     
     .about-section-text {
-        font-size: 15px;
+        font-size: 18px;
     }
     
     .about-topics-title {
