@@ -4574,3 +4574,33 @@ a.nav-filter[href="about/"]:hover::after {
     font-size: 20px;
     margin-bottom: 8px;
 }
+/* =========================================================================
+   AJUSTES DE LEITURA, CABEÇALHO E BARRA DE PROGRESSO
+   ========================================================================= */
+
+/* 1. Organiza o espaçamento do texto (aspecto editorial e coeso) */
+.article-body p {
+    margin-bottom: 1.25rem !important; /* Aproxima os parágrafos */
+    line-height: 1.65 !important;      /* Melhora a altura da linha */
+}
+
+/* 2. Fixa o cabeçalho (Logo, Casinha, Lua) no topo da tela */
+.article-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--bg-color, #0b0f19); /* Evita que o texto passe por cima */
+}
+
+/* 3. Joga a barra de progresso de leitura para baixo (Desktop e Mobile) */
+/* Substitua .reading-progress pela classe exata da sua barra, se for diferente */
+.reading-progress, 
+.progress-container, 
+#progress-bar {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+}

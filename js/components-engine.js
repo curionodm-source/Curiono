@@ -110,8 +110,11 @@ function initQuickQuiz() {
         }
         
         .quiz-answer-btn:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
+            cursor: default;
+        }
+        
+        .quiz-answer-btn.dimmed {
+            opacity: 0.5;
         }
         
         .quiz-answer-letter {
@@ -130,11 +133,13 @@ function initQuickQuiz() {
         .quiz-answer-btn.correct {
             background: rgba(60, 201, 214, 0.15);
             border-color: var(--color-primary);
+            opacity: 1;
         }
         
         .quiz-answer-btn.incorrect {
             background: rgba(255, 100, 100, 0.1);
             border-color: rgba(255, 100, 100, 0.3);
+            opacity: 1;
         }
         
         .quiz-feedback {
@@ -173,6 +178,25 @@ function initQuickQuiz() {
             line-height: 1.6;
             color: var(--color-text-muted);
         }
+
+        .quiz-try-again-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(255, 100, 100, 0.4);
+            color: #ff6464;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-try-again-btn:hover {
+            background: rgba(255, 100, 100, 0.1);
+            border-color: #ff6464;
+        }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
@@ -204,25 +228,62 @@ function initQuickQuiz() {
     
     answerButtons.forEach(button => {
         button.addEventListener('click', function() {
+            // Se já respondeu, ignora o clique
+            if (container.classList.contains('quiz-answered')) return;
+            container.classList.add('quiz-answered');
+
             const selectedAnswer = this.dataset.answer;
             const isCorrect = selectedAnswer === quizData.correctAnswer;
             
-            // Desabilitar todos os botões
+            // Verifica se existe um feedback específico para a letra, senão usa a explicação geral
+            const specificFeedback = (quizData.feedback && quizData.feedback[selectedAnswer]) 
+                                     ? quizData.feedback[selectedAnswer] 
+                                     : quizData.explanation;
+
+            // Desabilitar todos os botões e aplicar estilos
             answerButtons.forEach(btn => {
                 btn.disabled = true;
+                btn.classList.add('dimmed');
+                
                 if (btn.dataset.answer === quizData.correctAnswer) {
                     btn.classList.add('correct');
+                    btn.classList.remove('dimmed');
                 } else if (btn.dataset.answer === selectedAnswer && !isCorrect) {
                     btn.classList.add('incorrect');
+                    btn.classList.remove('dimmed');
                 }
             });
             
-            // Mostrar feedback
-            feedbackContainer.classList.add('is-visible', isCorrect ? 'correct' : 'incorrect');
-            feedbackContainer.innerHTML = `
-                <div class="quiz-feedback-title">${isCorrect ? '✓ Correct' : 'Not quite.'}</div>
-                <div class="quiz-feedback-text">${quizData.explanation}</div>
+            // Construir o HTML do feedback
+            let feedbackHTML = `
+                <div class="quiz-feedback-title" style="color: ${isCorrect ? '#10b981' : '#ef4444'}">${isCorrect ? '✓ Correct' : 'Not quite.'}</div>
+                <div class="quiz-feedback-text">${specificFeedback}</div>
             `;
+
+            // Adiciona o botão Try Again se errar
+            if (!isCorrect) {
+                feedbackHTML += `<button class="quiz-try-again-btn">Try Again</button>`;
+            }
+
+            // Mostrar feedback
+            feedbackContainer.className = 'quiz-feedback is-visible';
+            feedbackContainer.classList.add(isCorrect ? 'correct' : 'incorrect');
+            feedbackContainer.innerHTML = feedbackHTML;
+
+            // Lógica do botão "Try Again"
+            if (!isCorrect) {
+                const tryAgainBtn = feedbackContainer.querySelector('.quiz-try-again-btn');
+                tryAgainBtn.addEventListener('click', function() {
+                    // Reseta o estado do quiz
+                    container.classList.remove('quiz-answered');
+                    feedbackContainer.className = 'quiz-feedback';
+                    
+                    answerButtons.forEach(btn => {
+                        btn.disabled = false;
+                        btn.classList.remove('correct', 'incorrect', 'dimmed');
+                    });
+                });
+            }
         });
     });
 }
@@ -241,13 +302,8 @@ function initRabbitHole() {
     
     if (!rabbitHoleData || !Array.isArray(rabbitHoleData)) return;
     
-    // Filtrar apenas sugestões com URLs válidas
-    const validSuggestions = rabbitHoleData.filter(suggestion => 
-        suggestion.url && suggestion.url.trim() !== ''
-    );
-    
-    // Se não houver sugestões válidas, não renderizar nada
-    if (validSuggestions.length === 0) return;
+    // Se não houver sugestões, não renderizar nada
+    if (rabbitHoleData.length === 0) return;
     
     const container = document.getElementById('curiolo-rabbithole-container');
     if (!container) return;
@@ -256,7 +312,7 @@ function initRabbitHole() {
     const isInArticles = currentPath.includes('/articles/');
     const prefix = isInArticles ? '../../../' : '';
     
-    // Renderizar o Rabbit Hole
+    // Renderizar o Rabbit Hole (mesmo com links vazios ele aparece agora)
     container.innerHTML = `
         <div class="curiolo-rabbit-hole">
             <div class="rabbit-hole-header">
@@ -264,8 +320,8 @@ function initRabbitHole() {
                 <p class="rabbit-hole-subtitle">Your curiosity doesn't have to end here.</p>
             </div>
             <div class="rabbit-hole-grid">
-                ${validSuggestions.map(suggestion => `
-                    <a href="${prefix}${suggestion.url}" class="rabbit-hole-card">
+                ${rabbitHoleData.map(suggestion => `
+                    <a href="${suggestion.url && suggestion.url.trim() !== '' ? prefix + suggestion.url : 'javascript:void(0)'}" class="rabbit-hole-card">
                         <div class="rabbit-hole-card-category">${suggestion.category}</div>
                         <h3 class="rabbit-hole-card-title">${suggestion.title}</h3>
                         <p class="rabbit-hole-card-description">${suggestion.description}</p>
