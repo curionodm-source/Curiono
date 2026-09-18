@@ -5,19 +5,19 @@
 const curOLOComponentsData = {
     quickQuizData: {
         "fish-with-no-red-blood": {
-            question: "Why can Antarctic icefish survive without functional hemoglobin?",
+            question: "What makes Antarctic icefish unique among vertebrates?",
             answers: [
-                { id: "A", text: "They no longer need oxygen." },
-                { id: "B", text: "They produce oxygen inside their blood." },
-                { id: "C", text: "Their environment and extensive physiological adaptations help compensate for their extremely low blood oxygen-carrying capacity." },
-                { id: "D", text: "Their blood contains another protein that completely replaces hemoglobin." }
+                { id: "A", text: "They can survive without water." },
+                { id: "B", text: "They lack functional hemoglobin and red blood cells." },
+                { id: "C", text: "They have blue blood instead of red." },
+                { id: "D", text: "They can live in boiling water." }
             ],
-            correctAnswer: "C",
+            correctAnswer: "B",
             feedback: {
-                A: "Icefish cells still absolutely require oxygen for aerobic energy production, just like ours do. They didn't eliminate the need, just changed the delivery method.",
-                B: "They don't produce their own oxygen. They absorb it directly from the highly oxygenated, freezing Antarctic waters around them.",
-                C: "Icefish still depend on oxygen for cellular metabolism. Their survival is possible because the cold, oxygen-rich Antarctic environment is favorable to dissolved oxygen transport, while their bodies compensate with adaptations including large hearts and high blood flow.",
-                D: "There is no 'replacement' protein. They simply carry oxygen physically dissolved directly in their blood plasma, which is highly inefficient but compensated by their large hearts."
+                A: "Icefish still need water to survive, just like all fish.",
+                B: "Correct! Antarctic icefish are the only known vertebrates that completely lack functional hemoglobin and mature red blood cells.",
+                C: "Their blood appears pale or translucent, not blue. The lack of hemoglobin removes the red color.",
+                D: "Icefish live in freezing Antarctic waters, not boiling water."
             }
         }
     },
@@ -27,19 +27,19 @@ const curOLOComponentsData = {
                 title: "How Do Animals Survive Extreme Cold?",
                 category: "Nature / Science",
                 description: "Discover the strange physiological strategies life uses in environments where ordinary biology struggles.",
-                url: "../../../articles/science/extreme-cold/index.html"
+                url: ""  // Deixe vazio até criar o artigo
             },
             {
                 title: "What Can Evolution Change?",
                 category: "Science",
                 description: "Explore how natural selection, genetic change and environmental pressure can reshape living organisms.",
-                url: "../../../articles/science/evolution/index.html"
+                url: ""  // Deixe vazio até criar o artigo
             },
             {
                 title: "What Else Lives Beneath Antarctic Waters?",
                 category: "Nature",
                 description: "The icefish are only one part of the extraordinary ecosystem beneath the Southern Ocean.",
-                url: "../../../articles/nature/antarctic-waters/index.html"
+                url: ""  // Deixe vazio até criar o artigo
             }
         ]
     }

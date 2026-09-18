@@ -235,10 +235,10 @@ function initQuickQuiz() {
             const selectedAnswer = this.dataset.answer;
             const isCorrect = selectedAnswer === quizData.correctAnswer;
             
-            // Verifica se existe um feedback específico para a letra, senão usa a explicação geral
+            // Usa o feedback específico para a alternativa selecionada
             const specificFeedback = (quizData.feedback && quizData.feedback[selectedAnswer]) 
                                      ? quizData.feedback[selectedAnswer] 
-                                     : quizData.explanation;
+                                     : "Good question! Let's think about this...";
 
             // Desabilitar todos os botões e aplicar estilos
             answerButtons.forEach(btn => {
@@ -302,8 +302,13 @@ function initRabbitHole() {
     
     if (!rabbitHoleData || !Array.isArray(rabbitHoleData)) return;
     
-    // Se não houver sugestões, não renderizar nada
-    if (rabbitHoleData.length === 0) return;
+    // Filtrar apenas sugestões com URLs válidas
+    const validSuggestions = rabbitHoleData.filter(suggestion => 
+        suggestion.url && suggestion.url.trim() !== ''
+    );
+    
+    // Se não houver sugestões válidas, não renderizar nada
+    if (validSuggestions.length === 0) return;
     
     const container = document.getElementById('curiolo-rabbithole-container');
     if (!container) return;
@@ -312,7 +317,7 @@ function initRabbitHole() {
     const isInArticles = currentPath.includes('/articles/');
     const prefix = isInArticles ? '../../../' : '';
     
-    // Renderizar o Rabbit Hole (mesmo com links vazios ele aparece agora)
+    // Renderizar o Rabbit Hole apenas com sugestões válidas
     container.innerHTML = `
         <div class="curiolo-rabbit-hole">
             <div class="rabbit-hole-header">
@@ -320,8 +325,8 @@ function initRabbitHole() {
                 <p class="rabbit-hole-subtitle">Your curiosity doesn't have to end here.</p>
             </div>
             <div class="rabbit-hole-grid">
-                ${rabbitHoleData.map(suggestion => `
-                    <a href="${suggestion.url && suggestion.url.trim() !== '' ? prefix + suggestion.url : 'javascript:void(0)'}" class="rabbit-hole-card">
+                ${validSuggestions.map(suggestion => `
+                    <a href="${prefix}${suggestion.url}" class="rabbit-hole-card">
                         <div class="rabbit-hole-card-category">${suggestion.category}</div>
                         <h3 class="rabbit-hole-card-title">${suggestion.title}</h3>
                         <p class="rabbit-hole-card-description">${suggestion.description}</p>
