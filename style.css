@@ -4232,7 +4232,7 @@ a.nav-filter[href="about/"]:hover::after {
 
 .article-header {
     width: 100%;
-    padding: 1.25rem 2rem;
+    padding: 0.5rem 2rem 1.25rem 2rem;
     box-sizing: border-box;
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
@@ -4244,10 +4244,11 @@ a.nav-filter[href="about/"]:hover::after {
 .article-header-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    padding-top: 0.5rem;
 }
 
 /* ===== BARRA DE PROGRESSO DE LEITURA ===== */
@@ -4304,14 +4305,14 @@ a.nav-filter[href="about/"]:hover::after {
 }
 
 .article-logo-small img {
-    height: 32px;
+    height: 28px;
     width: auto;
     opacity: 1 !important;
 }
 
 .article-logo-small-text {
     font-family: var(--font-serif);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--color-text) !important;
     line-height: 1;
@@ -4366,17 +4367,18 @@ a.nav-filter[href="about/"]:hover::after {
 
 @media (max-width: 768px) {
     .article-header {
-        height: 56px;
-        padding: 0.5rem 1rem;
+        height: auto;
+        padding: 0.25rem 1rem 0.75rem 1rem;
     }
 
     .article-header-content {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         padding: 0;
         width: 100%;
         box-sizing: border-box;
+        padding-top: 0.25rem;
     }
 
     .article-header-left {
@@ -4397,13 +4399,13 @@ a.nav-filter[href="about/"]:hover::after {
     }
 
     .article-logo-small img {
-        height: 24px;
+        height: 22px;
         width: auto;
         opacity: 1 !important;
     }
 
     .article-logo-small-text {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         color: var(--color-text) !important;
         opacity: 1 !important;
@@ -4423,9 +4425,9 @@ a.nav-filter[href="about/"]:hover::after {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 4px;
-        min-width: 36px;
-        min-height: 36px;
+        padding: 2px;
+        min-width: 32px;
+        min-height: 32px;
         color: var(--color-text);
         background: none;
         border: none;
@@ -4434,13 +4436,13 @@ a.nav-filter[href="about/"]:hover::after {
     /* Theme toggle on right side */
     .article-header-right {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .theme-toggle {
-        padding: 4px;
-        min-width: 36px;
-        min-height: 36px;
+        padding: 2px;
+        min-width: 32px;
+        min-height: 32px;
         color: var(--color-text);
         background: none;
         border: none;
@@ -4449,12 +4451,13 @@ a.nav-filter[href="about/"]:hover::after {
 
 @media (max-width: 480px) {
     .article-header {
-        height: 52px;
-        padding: 0.5rem 0.75rem;
+        height: auto;
+        padding: 0.25rem 0.75rem 0.75rem 0.75rem;
     }
 
     .article-header-left {
         gap: 4px;
+        align-items: flex-start;
     }
 
     .article-logo-small {
@@ -4586,7 +4589,7 @@ a.nav-filter[href="about/"]:hover::after {
 
 /* 2. Fixa o cabeçalho (Logo, Casinha, Lua) no topo da tela */
 .article-header {
-    position: sticky !important;
+    position: sticky;
     top: 0;
     z-index: 1000;
     background-color: var(--bg-color, #0b0f19); /* Evita que o texto passe por cima */
@@ -4603,4 +4606,57 @@ a.nav-filter[href="about/"]:hover::after {
     left: 0;
     width: 100%;
     z-index: 1001;
+}
+
+
+/* =========================================
+   CUR OLO — GLASS HEADER
+   ========================================= */
+
+.article-header {
+    background: rgba(5, 23, 38, 0.72);
+    
+    /* Efeito de vidro */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    /* Borda muito discreta */
+    border-bottom: 1px solid rgba(120, 210, 220, 0.08);
+
+    /* Mantém o cabeçalho sobre o conteúdo */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* Suavidade */
+    transition: background 0.25s ease,
+                backdrop-filter 0.25s ease;
+}
+.article-header {
+    background: rgba(5, 23, 38, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(120, 210, 220, 0.08);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* =========================================
+   ARTICLE HEADER — POSIÇÃO DOS ELEMENTOS
+   ========================================= */
+
+/* Header principal */
+.article-header {
+    position: sticky;
+    top: 0;
+}
+
+/* Barra de progresso apenas em artigos */
+.reading-progress-wrapper {
+    margin-bottom: 0.5rem;
 }

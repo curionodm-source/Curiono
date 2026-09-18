@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="article-header-divider">|</span>
                     
                     <a href="${prefix}" class="icon-btn" aria-label="Home" title="Home">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="article-header-right">
                     <button class="theme-toggle" id="themeToggle" aria-label="Switch mode" title="Switch mode">
                         <span class="theme-icon moon-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                             </svg>
                         </span>
                         <span class="theme-icon sun-icon" aria-hidden="true" style="display: none;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="5"></circle>
                                 <line x1="12" y1="1" x2="12" y2="3"></line>
                                 <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -144,66 +144,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 4. BARRA DE PROGRESSO DE LEITURA
-    const articleMain = document.querySelector('.article-main') || document.querySelector('.article-grid');
-    const articleHeader = document.querySelector('header.article-header');
-    
-    if (articleMain && articleHeader) {
-        // Criar e injetar a estrutura da barra de progresso
-        const progressWrapper = document.createElement('div');
-        progressWrapper.className = 'reading-progress-wrapper';
-        progressWrapper.innerHTML = `
-            <div class="reading-progress-track">
-                <div id="reading-progress-bar"></div>
-            </div>
-            <span id="reading-progress-text">0%</span>
-        `;
+    // 4. BARRA DE PROGRESSO DE LEITURA (APENAS EM PÁGINAS DE ARTIGO)
+    // Verificar se estamos em uma página de artigo
+    if (isInArticles) {
+        const articleMain = document.querySelector('.article-main') || document.querySelector('.article-grid');
+        const articleHeader = document.querySelector('header.article-header');
         
-        // Injetar no início do header
-        articleHeader.prepend(progressWrapper);
-        
-        // Lógica de scroll
-        const progressBar = document.getElementById('reading-progress-bar');
-        const progressText = document.getElementById('reading-progress-text');
-        
-        if (progressBar && progressText) {
-            let ticking = false;
+        if (articleMain && articleHeader) {
+            // Criar e injetar a estrutura da barra de progresso
+            const progressWrapper = document.createElement('div');
+            progressWrapper.className = 'reading-progress-wrapper';
+            progressWrapper.innerHTML = `
+                <div class="reading-progress-track">
+                    <div id="reading-progress-bar"></div>
+                </div>
+                <span id="reading-progress-text">0%</span>
+            `;
             
-            function updateProgress() {
-                const articleTop = articleMain.offsetTop;
-                const articleHeight = articleMain.offsetHeight;
-                const windowHeight = window.innerHeight;
-                const scrollTop = window.scrollY;
-                
-                // Calcular quando o conteúdo termina na tela
-                const articleEnd = articleTop + articleHeight - windowHeight;
-                
-                // Calcular progresso (0% quando começa, 100% quando termina)
-                let progress = ((scrollTop - articleTop) / (articleEnd - articleTop)) * 100;
-                
-                // Travar entre 0 e 100
-                progress = Math.max(0, Math.min(100, progress));
-                
-                // Atualizar UI
-                progressBar.style.width = progress + '%';
-                progressText.innerText = Math.round(progress) + '%';
-                
-                ticking = false;
-            }
+            // Injetar no início do header
+            articleHeader.prepend(progressWrapper);
             
-            function onScroll() {
-                if (!ticking) {
-                    requestAnimationFrame(updateProgress);
-                    ticking = true;
+            // Lógica de scroll
+            const progressBar = document.getElementById('reading-progress-bar');
+            const progressText = document.getElementById('reading-progress-text');
+            
+            if (progressBar && progressText) {
+                let ticking = false;
+                
+                function updateProgress() {
+                    const articleTop = articleMain.offsetTop;
+                    const articleHeight = articleMain.offsetHeight;
+                    const windowHeight = window.innerHeight;
+                    const scrollTop = window.scrollY;
+                    
+                    // Calcular quando o conteúdo termina na tela
+                    const articleEnd = articleTop + articleHeight - windowHeight;
+                    
+                    // Calcular progresso (0% quando começa, 100% quando termina)
+                    let progress = ((scrollTop - articleTop) / (articleEnd - articleTop)) * 100;
+                    
+                    // Travar entre 0 e 100
+                    progress = Math.max(0, Math.min(100, progress));
+                    
+                    // Atualizar UI
+                    progressBar.style.width = progress + '%';
+                    progressText.innerText = Math.round(progress) + '%';
+                    
+                    ticking = false;
                 }
+                
+                function onScroll() {
+                    if (!ticking) {
+                        requestAnimationFrame(updateProgress);
+                        ticking = true;
+                    }
+                }
+                
+                // Atualização inicial
+                updateProgress();
+                
+                // Event listeners
+                window.addEventListener('scroll', onScroll, { passive: true });
+                window.addEventListener('resize', onScroll, { passive: true });
             }
-            
-            // Atualização inicial
-            updateProgress();
-            
-            // Event listeners
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', onScroll, { passive: true });
         }
     }
 });
